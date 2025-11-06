@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>FRIDAY — Coming Soon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --y:#ffd54a;
+      --o:#ff7a18;
+      --bg1:#07090e;
+      --bg2:#0e1320;
+      --bg3:#1b0f14;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      background:
+        radial-gradient(1200px 700px at 15% 20%, rgba(255,122,24,.12), transparent 60%),
+        radial-gradient(1000px 600px at 85% 80%, rgba(255,213,74,.10), transparent 60%),
+        radial-gradient(900px 900px at 50% 50%, rgba(255,255,255,.04), transparent 70%),
+        linear-gradient(180deg, var(--bg1), var(--bg2) 40%, var(--bg3));
+      animation: nebula 20s ease-in-out infinite alternate;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      position:relative;
+      isolation:isolate;
+      color:#eaeaea;
+    }
+
+    body::after{
+      content:"";
+      position:absolute; inset:0;
+      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size:100% 3px;
+      mix-blend-mode:soft-light;
+      animation: scan 6s linear infinite;
+      pointer-events:none;
+      z-index:0;
+    }
+    @keyframes scan{0%{transform:translateY(-2%)}100%{transform:translateY(2%)}}
+
+    .stars, .stars2{
+      position:absolute; inset:-100px;
+      background:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.8), transparent 60%),
+        radial-gradient(1.5px 1.5px at 70% 60%, rgba(255,255,255,.7), transparent 60%),
+        radial-gradient(1.8px 1.8px at 40% 80%, rgba(255,255,255,.6), transparent 60%),
+        radial-gradient(1.2px 1.2px at 80% 25%, rgba(255,255,255,.65), transparent 60%),
+        radial-gradient(1.4px 1.4px at 10% 70%, rgba(255,255,255,.55), transparent 60%),
+        radial-gradient(1.6px 1.6px at 90% 45%, rgba(255,255,255,.7), transparent 60%);
+      opacity:.35;
+      filter:drop-shadow(0 0 6px rgba(255,213,74,.35));
+      z-index:0;
+      animation: drift 80s linear infinite;
+    }
+    .stars2{
+      transform:scale(1.4);
+      opacity:.22;
+      filter:drop-shadow(0 0 10px rgba(255,122,24,.25));
+      animation-duration: 120s;
+      animation-direction: reverse;
+    }
+    @keyframes drift{from{transform:translateY(-2%) translateX(-1%)}to{transform:translateY(2%) translateX(1%)}}
+
+    .wrap{
+      position:relative;
+      z-index:1;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      gap:1rem;
+    }
+
+    /* DIFFERENTIATED BANNER (glass outline pill) */
+    .badge{
+      position:absolute;
+      top:-2.6rem;
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      padding:.25rem .7rem;
+      font-size:.8rem;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      cursor:default;
+      color:#fffeee;
+      border-radius:999px;
+      /* transparent center + gradient border */
+      background:
+        linear-gradient(to bottom, rgba(14,19,32,0.35), rgba(14,19,32,0.35)) padding-box,
+        linear-gradient(90deg, var(--y), var(--o)) border-box;
+      border:1.5px solid transparent;
+      backdrop-filter: blur(4px) saturate(140%);
+      -webkit-backdrop-filter: blur(4px) saturate(140%);
+      box-shadow:
+        0 0 0.5rem rgba(255,213,74,.25),
+        inset 0 0 .2rem rgba(255,213,74,.15);
+      animation: badgeGlow 3s ease-in-out infinite;
+    }
+    .badge::before{
+      content:"⟡"; /* tiny holo glyph */
+      font-size:.9em;
+      opacity:.9;
+      transform: translateY(-1px);
+    }
+    @keyframes badgeGlow{
+      0%{ box-shadow:0 0 .4rem rgba(255,213,74,.18), inset 0 0 .15rem rgba(255,213,74,.12) }
+      50%{ box-shadow:0 0 .9rem rgba(255,122,24,.38), inset 0 0 .2rem rgba(255,213,74,.2) }
+      100%{ box-shadow:0 0 .4rem rgba(255,213,74,.18), inset 0 0 .15rem rgba(255,213,74,.12) }
+    }
+
+    .title{
+      font-size: clamp(3.5rem, 12vw, 14rem);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin:0;
+      background: linear-gradient(90deg, var(--y), var(--o), var(--y));
+      background-size: 200% 100%;
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+      animation: shimmer 3.5s linear infinite;
+      text-shadow:
+        0 0 .4rem rgba(255,213,74,.55),
+        0 0 1.1rem rgba(255,122,24,.45),
+        0 0 2.2rem rgba(255,122,24,.35);
+      position:relative;
+    }
+    .title::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(115deg,
+        rgba(255,255,255,0) 30%,
+        rgba(255,255,255,.75) 50%,
+        rgba(255,255,255,0) 70%);
+      mix-blend-mode:screen;
+      transform: translateX(-120%) skewX(-12deg);
+      animation: sweep 2.4s ease-in-out infinite;
+      pointer-events:none;
+      filter: blur(0.5px);
+    }
+    @keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+    @keyframes sweep{0%{transform:translateX(-120%) skewX(-12deg)}60%{transform:translateX(120%) skewX(-12deg)}100%{transform:translateX(120%) skewX(-12deg)}}
+    @keyframes nebula{0%{filter:hue-rotate(0deg) saturate(1) brightness(1)}100%{filter:hue-rotate(-12deg) saturate(1.15) brightness(1.05)}}
+
+    .title span{display:inline-block; animation:pulse 3.2s ease-in-out infinite alternate;}
+    @keyframes pulse{
+      from{ text-shadow:
+        0 0 .4rem rgba(255,213,74,.45),
+        0 0 1.2rem rgba(255,122,24,.35),
+        0 0 2.6rem rgba(255,122,24,.25);}
+      to  { text-shadow:
+        0 0 .8rem rgba(255,213,74,.75),
+        0 0 1.8rem rgba(255,122,24,.50),
+        0 0 3.6rem rgba(255,122,24,.40);}
+    }
+
+    .divider{
+      width:min(320px, 60vw);
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(255,213,74,.6), rgba(255,122,24,.65), transparent);
+      box-shadow: 0 0 8px rgba(255,122,24,.35);
+      border-radius:2px;
+      opacity:.85;
+    }
+
+    .subtitle{
+      margin-top:.25rem;
+      font-size: clamp(0.9rem, 2.4vw, 1.35rem);
+      letter-spacing:.06em;
+      opacity:0;
+      transform: translateY(6px);
+      animation: rise 900ms 300ms ease-out forwards;
+      background: linear-gradient(90deg, #fff, rgba(255,213,74,.95));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+      text-shadow: 0 0 .6rem rgba(255,213,74,.18);
+    }
+    @keyframes rise{to{opacity:1; transform:translateY(0)}}
+
+    /* CTA BUTTON stays filled gradient */
+    .cta{
+      margin-top:1.5rem;
+      padding:.65rem 1.6rem;
+      font-size:1rem;
+      font-weight:700;
+      color:#000;
+      background: linear-gradient(90deg, var(--y), var(--o));
+      border:none;
+      border-radius:999px;
+      cursor:pointer;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      box-shadow:0 0 10px rgba(255,213,74,.55);
+      transition: all .25s ease;
+      text-decoration:none;
+      display:inline-block;
+    }
+    .cta:hover{ transform:translateY(-2px) scale(1.03); box-shadow:0 0 16px rgba(255,122,24,.85); }
+    .cta:active{ transform:translateY(0) scale(0.98); }
+
+    /* Mobile: shrink badge slightly */
+    @media (max-width:420px){
+      .badge{ top:-2.2rem; font-size:.72rem; padding:.22rem .6rem; }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition:none !important }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="stars2"></div>
+
+  <main class="wrap">
+    <div class="badge">Coming Soon</div>
+
+    <h1 class="title" aria-label="FRIDAY">
+      <span>F.</span><span>R.</span><span>I.</span><span>D.</span><span>A.</span><span>Y</span>
+    </h1>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <p class="subtitle">Hypothesis to Insights. In minutes!</p>
+
+    <a class="cta" href="https://fridayanalytics.substack.com/" target="_blank" rel="noopener">
+      Stay Updated
+    </a>
+  </main>
+</body>
+</html>
