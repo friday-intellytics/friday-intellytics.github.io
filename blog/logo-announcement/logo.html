@@ -6,19 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logo Announcement</title>
     <style>
+        :root {
+            --bg-color: #fcfcfc;
+            --text-color: #333;
+            --triangle-fill: black;
+            --triangle-stroke: black;
+            --transition-speed: 0.6s;
+        }
+
+        body.dark-mode {
+            --bg-color: #050505;
+            --text-color: #fcfcfc;
+            --triangle-fill: black;
+            --triangle-stroke: url(#logoGradient);
+            ;
+        }
+
         body {
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #fcfcfc;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             overflow: hidden;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Outfit', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .logo-container {
-
             width: 400px;
             height: 400px;
             position: relative;
@@ -32,10 +49,72 @@
             height: 100%;
             overflow: visible;
         }
+
+        .large-triangle {
+            fill: var(--triangle-fill);
+            /* stroke: var(--triangle-stroke); */
+            stroke: url(#logoGradient);
+            stroke-width: 3;
+            stroke-linejoin: round;
+            transition: fill var(--transition-speed) ease, stroke var(--transition-speed) ease;
+        }
+
+        .small-triangle {
+            fill: url(#logoGradient);
+            stroke: url(#logoGradient);
+            stroke-width: 3;
+            stroke-linejoin: round;
+            transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
+
+        .toggle-container {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 100;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.1s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        body:not(.dark-mode) .theme-toggle {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .theme-toggle:active {
+            transform: translateY(0);
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="toggle-container">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+            <span id="toggle-text">Dark Mode</span>
+        </button>
+    </div>
+
     <div class="logo-container">
         <svg viewBox="0 0 100 100" class="logo-svg">
             <defs>
@@ -46,13 +125,24 @@
             </defs>
 
             <!-- Large Triangle -->
-            <polygon class="large-triangle" points="10,10 90,10 50,90" fill="black" stroke="black" stroke-width="3"
-                stroke-linejoin="round" />
+            <polygon class="large-triangle" points="10,10 90,10 50,90" />
 
-            <polygon class="small-triangle" points="28,15 82,15 55,70" fill="url(#logoGradient)"
-                stroke="url(#logoGradient)" stroke-width="3" stroke-linejoin="round" />
+            <!-- Small Triangle -->
+            <polygon class="small-triangle" points="28,15 82,15 55,70" />
         </svg>
     </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const toggleText = document.getElementById('toggle-text');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            toggleText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        });
+    </script>
 </body>
 
 </html>
