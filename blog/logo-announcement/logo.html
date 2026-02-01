@@ -329,6 +329,39 @@
             letter-spacing: -0.03em;
         }
 
+        /* Page 3: Rubik Mono One comparison */
+        .sidebar.page-3 {
+            --brand-font: 'Rubik Mono One', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+
+        .sidebar.page-3 .brand-text {
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        /* Page 4: Anton comparison */
+        .sidebar.page-4 {
+            --brand-font: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .sidebar.page-4 .brand-text {
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+        }
+
+        /* Page 5: Black Han Sans comparison (caps) */
+        .sidebar.page-5 {
+            --brand-font: 'Black Han Sans', 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .sidebar.page-5 .brand-text {
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
         .sidebar .logo-container {
             width: min(320px, 78%);
             height: auto;
@@ -459,7 +492,8 @@
         }
     </style>
     <link rel="stylesheet" href="vendor/latex-math/latex-math.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&family=Outfit:wght@400;600&family=Rubik+Mono+One&display=swap">
 </head>
 
 <body>
@@ -519,7 +553,10 @@
                 <nav class="pager" aria-label="Preview pages">
                     <button type="button" class="pager-btn" data-page="1" aria-label="Page 1" aria-current="page">1</button>
                     <button type="button" class="pager-btn" data-page="2" aria-label="Page 2">2</button>
-                    <div class="pager-count" id="pager-count" aria-hidden="true">1 / 2</div>
+                    <button type="button" class="pager-btn" data-page="3" aria-label="Page 3">3</button>
+                    <button type="button" class="pager-btn" data-page="4" aria-label="Page 4">4</button>
+                    <button type="button" class="pager-btn" data-page="5" aria-label="Page 5">5</button>
+                    <div class="pager-count" id="pager-count" aria-hidden="true">1 / 5</div>
                 </nav>
             </div>
         </div>
@@ -537,14 +574,22 @@
         const pagerCount = document.getElementById('pager-count');
         const pagerButtons = Array.from(document.querySelectorAll('.pager-btn'));
 
+        const totalPages = 5;
+
         function setPage(pageNumber) {
-            const page = pageNumber === 2 ? 2 : 1;
+            const page = pageNumber === 5 ? 5 : (pageNumber === 4 ? 4 : (pageNumber === 3 ? 3 : (pageNumber === 2 ? 2 : 1)));
 
             sidebar.classList.toggle('page-1', page === 1);
             sidebar.classList.toggle('page-2', page === 2);
+            sidebar.classList.toggle('page-3', page === 3);
+            sidebar.classList.toggle('page-4', page === 4);
+            sidebar.classList.toggle('page-5', page === 5);
+
+            // Page-specific wordmark text
+            brandText.textContent = (page === 4 || page === 5) ? 'FRIDAY' : 'friday';
 
             // Page 2 is a wordmark comparison: ensure the text is visible.
-            if (page === 2 && !sidebar.classList.contains('show-text')) {
+            if (page !== 1 && !sidebar.classList.contains('show-text')) {
                 sidebar.classList.add('show-text');
                 textToggle.setAttribute('aria-pressed', 'true');
                 textToggleText.textContent = 'Hide Text';
@@ -560,7 +605,7 @@
                 }
             }
 
-            pagerCount.textContent = `${page} / 2`;
+            pagerCount.textContent = `${page} / ${totalPages}`;
         }
 
         themeToggle.addEventListener('click', () => {
