@@ -11,23 +11,22 @@
             --text-color: #333;
             --transition-speed: 0.6s;
 
-            --sidebar-bg: rgba(255, 255, 255, 0.72);
+            --sidebar-bg: #ffffff;
             --sidebar-border: rgba(0, 0, 0, 0.10);
             --sidebar-shadow: 0 18px 55px rgba(0, 0, 0, 0.12);
             --sidebar-width: 420px;
             --sidebar-handle-width: 56px;
+            --sidebar-handle-protrude: 14px;
+            --sidebar-gap: 18px;
             --sidebar-radius: 22px;
 
             --ui-font: 'Outfit', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* --brand-font: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; */
-            /* --brand-font: monospace; */
-            /* "Math-style f" feel (as in f(x)) */
-            --brand-font: 'STIX Two Text', Georgia, serif;
-            /* Default LaTeX math-italic feel (Computer Modern-ish). KaTeX provides a great web fallback. */
             --brand-font: 'KaTeX_Math', 'Latin Modern Math', 'Computer Modern', 'CMU Serif', 'Cambria Math', Georgia, serif;
         }
 
         body {
+            --sidebar-reserved: calc(var(--sidebar-handle-width) + var(--sidebar-gap));
+
             margin: 0;
             min-height: 100vh;
             background-color: var(--bg-color);
@@ -38,12 +37,17 @@
             transition: background-color var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        body.sidebar-open {
+            --sidebar-reserved: calc(var(--sidebar-width) + var(--sidebar-gap));
+        }
+
         .main {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 36px 24px;
+            padding: 36px calc(24px + var(--sidebar-reserved)) 36px 24px;
+            transition: padding-right 360ms cubic-bezier(0.2, 0.9, 0.25, 1);
         }
 
         .hero {
@@ -80,8 +84,6 @@
         }
 
         .hero p {
-            align-items: center;
-            justify-content: center;
             margin: 0 auto;
             font-size: clamp(16px, 2vw, 19px);
             line-height: 1.55;
@@ -106,7 +108,6 @@
 
         .large-triangle {
             fill: var(--triangle-fill);
-            /* stroke: var(--triangle-stroke); */
             stroke: url(#logoGradient);
             stroke-width: 3;
             stroke-linejoin: round;
@@ -159,7 +160,6 @@
         }
 
         .sidebar {
-            /* Sidebar maintains its own theme; main page stays light. */
             --text-color: #333;
             --triangle-fill: black;
             color: var(--text-color);
@@ -184,8 +184,6 @@
 
         .sidebar.dark-mode {
             --text-color: #fcfcfc;
-            --triangle-fill: black;
-
             --sidebar-bg: black;
             --sidebar-border: rgba(255, 255, 255, 0.12);
             --sidebar-shadow: 0 18px 55px rgba(0, 0, 0, 0.55);
@@ -193,6 +191,15 @@
 
         .sidebar.open {
             transform: translateX(0);
+        }
+
+        .sidebar-scrim {
+            position: fixed;
+            inset: 0;
+            background: transparent;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 150;
         }
 
         .sidebar-handle {
@@ -215,8 +222,16 @@
             transition: transform 220ms ease;
         }
 
+        .sidebar.open .sidebar-handle {
+            transform: translateX(calc(-1 * var(--sidebar-handle-protrude)));
+        }
+
         .sidebar-handle:hover {
             transform: translateX(-4px);
+        }
+
+        .sidebar.open .sidebar-handle:hover {
+            transform: translateX(calc(-1 * var(--sidebar-handle-protrude) - 4px));
         }
 
         .handle-inner {
@@ -242,6 +257,10 @@
             border-bottom: 2px solid var(--text-color);
             transform: rotate(135deg);
             opacity: 0.75;
+        }
+
+        .sidebar.open .handle-arrow {
+            transform: rotate(-45deg);
         }
 
         .sidebar:not(.open) .sidebar-handle {
@@ -312,41 +331,27 @@
             padding-top: 0.04em;
             padding-bottom: 0.18em;
             padding-right: 0.22em;
-            /* avoids right-edge clipping from italic overhang + overflow hidden */
             box-sizing: border-box;
-            /* keeps descenders (e.g. 'y') from looking clipped */
-
             max-width: 0;
             opacity: 0;
             overflow: hidden;
             white-space: nowrap;
             min-width: 0;
             transform: translateX(-10px);
-            margin-left: 0;
-            transition: max-width 260ms ease, opacity 220ms ease, transform 260ms ease, margin-left 260ms ease;
+            transition: max-width 260ms ease, opacity 220ms ease, transform 260ms ease;
         }
 
         .sidebar.show-text .brand-text {
             max-width: 100%;
             opacity: 1;
             transform: translateX(0);
-            margin-left: 0;
             overflow: visible;
-            text-overflow: clip;
-        }
-
-        /* Page variations for comparing wordmark weight */
-        .sidebar.page-1 .brand-text {
-            font-weight: 400;
         }
 
         .sidebar.page-2 .brand-text {
-            font-style: italic;
             font-weight: 700;
-            letter-spacing: -0.03em;
         }
 
-        /* Page 3: Rubik Mono One comparison */
         .sidebar.page-3 {
             --brand-font: 'Rubik Mono One', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
         }
@@ -357,7 +362,6 @@
             letter-spacing: 0.02em;
         }
 
-        /* Page 4: Anton comparison */
         .sidebar.page-4 {
             --brand-font: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
@@ -368,7 +372,6 @@
             letter-spacing: 0.04em;
         }
 
-        /* Page 5: Black Han Sans comparison (caps) */
         .sidebar.page-5 {
             --brand-font: 'Black Han Sans', 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
@@ -385,9 +388,6 @@
             aspect-ratio: 1 / 1;
         }
 
-        /* Wordmark lockup sizing:
-           - Set a shared lockup font-size for the wordmark
-           - Size the mark in `em` so it stays slightly smaller than the capital F */
         .sidebar.show-text .preview {
             font-size: clamp(30px, 4.2vw, 44px);
         }
@@ -458,13 +458,21 @@
             user-select: none;
         }
 
+        @media (max-width: 1100px) {
+            body,
+            body.sidebar-open {
+                --sidebar-reserved: calc(var(--sidebar-handle-width) + var(--sidebar-gap));
+            }
+
+            body.sidebar-open .sidebar-scrim {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+
         @media (max-width: 860px) {
             :root {
                 --sidebar-width: 360px;
-            }
-
-            .main {
-                padding-right: 84px;
             }
 
             .hero h1 {
@@ -493,8 +501,8 @@
             }
 
             .sidebar.show-text .logo-container {
-                width: 0.92em;
-                height: 0.92em;
+                width: 1.1em;
+                height: 1.1em;
             }
         }
 
@@ -532,7 +540,7 @@
                         style="fill:url(#logoGradientHero);stroke:url(#logoGradientHero)" />
                 </svg>
             </div>
-            <h1>It is called <b><i>Del</b></i></h1>
+            <h1>It is called <b><i>Del</i></b></h1>
             <h5>Try look variations here -> </h5>
             <br>
 
@@ -571,6 +579,8 @@
         </section>
     </main>
 
+    <div class="sidebar-scrim" id="sidebar-scrim" aria-hidden="true" hidden></div>
+
     <aside class="sidebar page-1" id="sidebar" aria-label="Interactive Logo Sidebar">
         <button class="sidebar-handle" id="sidebar-handle" aria-label="Open interactive preview" aria-expanded="false">
             <div class="handle-inner" aria-hidden="true">
@@ -600,10 +610,8 @@
                                 </linearGradient>
                             </defs>
 
-                            <!-- Large Triangle -->
                             <polygon class="large-triangle" points="10,10 90,10 50,90" />
 
-                            <!-- Small Triangle -->
                             <polygon class="small-triangle" points="28,15 82,15 55,70" />
                         </svg>
                     </div>
@@ -632,27 +640,25 @@
 
         const sidebar = document.getElementById('sidebar');
         const sidebarHandle = document.getElementById('sidebar-handle');
+        const sidebarScrim = document.getElementById('sidebar-scrim');
         const textToggle = document.getElementById('text-toggle');
         const textToggleText = document.getElementById('text-toggle-text');
         const brandText = document.getElementById('brand-text');
         const pagerCount = document.getElementById('pager-count');
         const pagerButtons = Array.from(document.querySelectorAll('.pager-btn'));
 
-        const totalPages = 5;
+        const pages = [1, 2, 3, 4, 5];
+        const totalPages = pages.length;
 
         function setPage(pageNumber) {
-            const page = pageNumber === 5 ? 5 : (pageNumber === 4 ? 4 : (pageNumber === 3 ? 3 : (pageNumber === 2 ? 2 : 1)));
+            const page = pages.includes(pageNumber) ? pageNumber : 1;
 
-            sidebar.classList.toggle('page-1', page === 1);
-            sidebar.classList.toggle('page-2', page === 2);
-            sidebar.classList.toggle('page-3', page === 3);
-            sidebar.classList.toggle('page-4', page === 4);
-            sidebar.classList.toggle('page-5', page === 5);
+            for (const p of pages) {
+                sidebar.classList.toggle(`page-${p}`, p === page);
+            }
 
-            // Page-specific wordmark text
-            brandText.textContent = (page === 4 || page === 5) ? 'FRIDAY' : 'friday';
+            brandText.textContent = page >= 4 ? 'FRIDAY' : 'friday';
 
-            // Page 2 is a wordmark comparison: ensure the text is visible.
             if (page !== 1 && !sidebar.classList.contains('show-text')) {
                 sidebar.classList.add('show-text');
                 textToggle.setAttribute('aria-pressed', 'true');
@@ -692,8 +698,13 @@
 
         function setSidebarOpen(isOpen) {
             sidebar.classList.toggle('open', isOpen);
+            document.body.classList.toggle('sidebar-open', isOpen);
             sidebarHandle.setAttribute('aria-expanded', String(isOpen));
             sidebarHandle.setAttribute('aria-label', isOpen ? 'Close interactive preview' : 'Open interactive preview');
+            sidebarScrim.toggleAttribute('hidden', !isOpen);
+            try {
+                localStorage.setItem('fridaySidebarOpen', String(isOpen));
+            } catch { }
         }
 
         // Default page = 1 (italic regular)
@@ -703,6 +714,18 @@
         sidebarHandle.addEventListener('click', () => {
             setSidebarOpen(!sidebar.classList.contains('open'));
         });
+
+        sidebarScrim.addEventListener('click', () => setSidebarOpen(false));
+
+        // Default open on desktop; collapsed (handle-only) on smaller screens.
+        const isSmallScreen = window.matchMedia('(max-width: 1100px)').matches;
+        let initialSidebarOpen = !isSmallScreen;
+        try {
+            const saved = localStorage.getItem('fridaySidebarOpen');
+            if (saved === 'true') initialSidebarOpen = true;
+            if (saved === 'false') initialSidebarOpen = false;
+        } catch { }
+        setSidebarOpen(initialSidebarOpen);
 
         // Swipe from the right edge to open/close (mobile-friendly).
         let startX = null;
