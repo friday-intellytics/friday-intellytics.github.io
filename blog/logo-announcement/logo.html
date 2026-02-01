@@ -20,7 +20,9 @@
 
             --ui-font: 'Outfit', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             /* --brand-font: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; */
-            --brand-font: monospace;
+            /* --brand-font: monospace; */
+            /* "Math-style f" feel (as in f(x)) */
+            --brand-font: 'STIX Two Text', Georgia, serif;
         }
 
         body {
@@ -279,8 +281,9 @@
         .brand-text {
             color: currentColor;
             font-family: var(--brand-font);
-            font-weight: 600;
-            letter-spacing: 0.01em;
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: -0.01em;
             font-size: 1em;
             line-height: 1.12;
             text-rendering: geometricPrecision;
@@ -382,6 +385,7 @@
     </style>
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Outfit:wght@400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&family=Outfit:wght@400;600&display=swap"
         rel="stylesheet">
 </head>
 
@@ -434,7 +438,7 @@
                         </svg>
                     </div>
 
-                    <div class="brand-text" id="brand-text" aria-hidden="true">Friday</div>
+                    <div class="brand-text" id="brand-text" aria-hidden="true">friday</div>
                 </div>
             </div>
         </div>
