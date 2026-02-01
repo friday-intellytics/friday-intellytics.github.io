@@ -12,52 +12,46 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #fcfcfc;
             overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .logo-container {
+
+            width: 400px;
+            height: 400px;
             position: relative;
-            width: 300px;
-            height: 300px;
-
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .triangle {
-            position: absolute;
-            clip-path: polygon(0 0, 100% 0, 50% 100%);
-
-
-        }
-
-        .triangle-large {
+        svg {
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top right, orange 50%, yellow);
-
-
-            top: 0;
-            left: 0;
-        }
-
-        .triangle-small {
-
-            background-color: white;
-
-            width: 70%;
-            height: 70%;
-
-            top: 20px;
-            right: 30px;
-
-            z-index: 2;
+            overflow: visible;
         }
     </style>
 </head>
 
 <body>
     <div class="logo-container">
-        <div class="triangle triangle-large"></div>
-        <div class="triangle triangle-small"></div>
+        <svg viewBox="0 0 100 100" class="logo-svg">
+            <defs>
+                <linearGradient id="logoGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="55%" style="stop-color:orange;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:yellow;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+
+            <!-- Large Triangle -->
+            <polygon class="large-triangle" points="10,10 90,10 50,90" fill="black" stroke="black" stroke-width="3"
+                stroke-linejoin="round" />
+
+            <polygon class="small-triangle" points="28,15 82,15 55,70" fill="url(#logoGradient)"
+                stroke="url(#logoGradient)" stroke-width="3" stroke-linejoin="round" />
+        </svg>
     </div>
 </body>
 
