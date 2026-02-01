@@ -17,6 +17,10 @@
             --sidebar-width: 420px;
             --sidebar-handle-width: 56px;
             --sidebar-radius: 22px;
+
+            --ui-font: 'Outfit', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* --brand-font: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; */
+            --brand-font: monospace;
         }
 
         body {
@@ -25,7 +29,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             overflow: hidden;
-            font-family: 'Outfit', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--ui-font);
             transition: background-color var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -125,6 +129,12 @@
 
         .theme-toggle:active {
             transform: translateY(0);
+        }
+
+        .sidebar-top .theme-toggle {
+            padding: 10px 14px;
+            font-size: 13px;
+            border-radius: 999px;
         }
 
         .sidebar {
@@ -237,6 +247,8 @@
         .sidebar-top {
             display: flex;
             justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
             padding: 18px 18px 0;
         }
 
@@ -254,10 +266,64 @@
             margin-left: var(--sidebar-handle-width);
         }
 
+        .preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            max-width: 100%;
+            min-width: 0;
+            padding: 6px 10px;
+        }
+
+        .brand-text {
+            color: currentColor;
+            font-family: var(--brand-font);
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            font-size: 1em;
+            line-height: 1.12;
+            text-rendering: geometricPrecision;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 0.08em;
+            /* keeps descenders (e.g. 'y') from looking clipped */
+
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            min-width: 0;
+            transform: translateX(-10px);
+            margin-left: 0;
+            transition: max-width 260ms ease, opacity 220ms ease, transform 260ms ease, margin-left 260ms ease;
+        }
+
+        .sidebar.show-text .brand-text {
+            max-width: min(320px, 100%);
+            opacity: 1;
+            transform: translateX(0);
+            margin-left: 0;
+        }
+
         .sidebar .logo-container {
-            width: min(360px, 86%);
+            width: min(320px, 78%);
             height: auto;
             aspect-ratio: 1 / 1;
+        }
+
+        /* Wordmark lockup sizing:
+           - Set a shared lockup font-size for the wordmark
+           - Size the mark in `em` so it stays slightly smaller than the capital F */
+        .sidebar.show-text .preview {
+            font-size: clamp(38px, 5.2vw, 50px);
+        }
+
+        .sidebar.show-text .logo-container {
+            width: 0.82em;
+            height: 0.82em;
+            aspect-ratio: 1 / 1;
+            flex: 0 0 auto;
         }
 
         @media (max-width: 860px) {
@@ -289,6 +355,19 @@
             .sidebar-handle {
                 height: 132px;
             }
+
+            .sidebar.show-text .preview {
+                flex-direction: column;
+            }
+
+            .sidebar.show-text .brand-text {
+                max-width: min(320px, 100%);
+            }
+
+            .sidebar.show-text .logo-container {
+                width: 0.86em;
+                height: 0.86em;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -301,7 +380,9 @@
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Outfit:wght@400;600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -326,27 +407,34 @@
 
         <div class="sidebar-content">
             <div class="sidebar-top">
+                <button class="theme-toggle" id="text-toggle" aria-label="Toggle brand text" aria-pressed="false">
+                    <span id="text-toggle-text">Show Text</span>
+                </button>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
                     <span id="toggle-text">Dark Mode</span>
                 </button>
             </div>
 
             <div class="sidebar-body">
-                <div class="logo-container">
-                    <svg viewBox="0 0 100 100" class="logo-svg">
-                        <defs>
-                            <linearGradient id="logoGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                                <stop offset="55%" style="stop-color:orange;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:yellow;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
+                <div class="preview" aria-label="Logo preview">
+                    <div class="logo-container">
+                        <svg viewBox="0 0 100 100" class="logo-svg">
+                            <defs>
+                                <linearGradient id="logoGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="55%" style="stop-color:orange;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:yellow;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
 
-                        <!-- Large Triangle -->
-                        <polygon class="large-triangle" points="10,10 90,10 50,90" />
+                            <!-- Large Triangle -->
+                            <polygon class="large-triangle" points="10,10 90,10 50,90" />
 
-                        <!-- Small Triangle -->
-                        <polygon class="small-triangle" points="28,15 82,15 55,70" />
-                    </svg>
+                            <!-- Small Triangle -->
+                            <polygon class="small-triangle" points="28,15 82,15 55,70" />
+                        </svg>
+                    </div>
+
+                    <div class="brand-text" id="brand-text" aria-hidden="true">Friday</div>
                 </div>
             </div>
         </div>
@@ -358,11 +446,22 @@
 
         const sidebar = document.getElementById('sidebar');
         const sidebarHandle = document.getElementById('sidebar-handle');
+        const textToggle = document.getElementById('text-toggle');
+        const textToggleText = document.getElementById('text-toggle-text');
+        const brandText = document.getElementById('brand-text');
 
         themeToggle.addEventListener('click', () => {
             sidebar.classList.toggle('dark-mode');
             const isDark = sidebar.classList.contains('dark-mode');
             toggleText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        });
+
+        textToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('show-text');
+            const showText = sidebar.classList.contains('show-text');
+            textToggle.setAttribute('aria-pressed', String(showText));
+            textToggleText.textContent = showText ? 'Hide Text' : 'Show Text';
+            brandText.setAttribute('aria-hidden', String(!showText));
         });
 
         function setSidebarOpen(isOpen) {
