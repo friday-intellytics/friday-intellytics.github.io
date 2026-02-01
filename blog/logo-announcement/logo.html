@@ -23,6 +23,8 @@
             /* --brand-font: monospace; */
             /* "Math-style f" feel (as in f(x)) */
             --brand-font: 'STIX Two Text', Georgia, serif;
+            /* Default LaTeX math-italic feel (Computer Modern-ish). KaTeX provides a great web fallback. */
+            --brand-font: 'KaTeX_Math', 'Latin Modern Math', 'Computer Modern', 'CMU Serif', 'Cambria Math', Georgia, serif;
         }
 
         body {
@@ -272,6 +274,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-wrap: nowrap;
             gap: 14px;
             max-width: 100%;
             min-width: 0;
@@ -281,21 +284,25 @@
         .brand-text {
             color: currentColor;
             font-family: var(--brand-font);
-            font-style: italic;
+            /* font-style: italic; */
             font-weight: 400;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.03em;
             font-size: 1em;
-            line-height: 1.12;
+            display: inline-block;
+            line-height: 1.28;
             text-rendering: geometricPrecision;
             -webkit-font-smoothing: antialiased;
-            padding-bottom: 0.08em;
+            padding-top: 0.04em;
+            padding-bottom: 0.18em;
+            padding-right: 0.22em;
+            /* avoids right-edge clipping from italic overhang + overflow hidden */
+            box-sizing: border-box;
             /* keeps descenders (e.g. 'y') from looking clipped */
 
             max-width: 0;
             opacity: 0;
             overflow: hidden;
             white-space: nowrap;
-            text-overflow: ellipsis;
             min-width: 0;
             transform: translateX(-10px);
             margin-left: 0;
@@ -303,10 +310,12 @@
         }
 
         .sidebar.show-text .brand-text {
-            max-width: min(320px, 100%);
+            max-width: 100%;
             opacity: 1;
             transform: translateX(0);
             margin-left: 0;
+            overflow: visible;
+            text-overflow: clip;
         }
 
         .sidebar .logo-container {
@@ -319,12 +328,12 @@
            - Set a shared lockup font-size for the wordmark
            - Size the mark in `em` so it stays slightly smaller than the capital F */
         .sidebar.show-text .preview {
-            font-size: clamp(38px, 5.2vw, 50px);
+            font-size: clamp(30px, 4.2vw, 44px);
         }
 
         .sidebar.show-text .logo-container {
-            width: 0.82em;
-            height: 0.82em;
+            width: 1.3em;
+            height: 1.3em;
             aspect-ratio: 1 / 1;
             flex: 0 0 auto;
         }
@@ -360,16 +369,12 @@
             }
 
             .sidebar.show-text .preview {
-                flex-direction: column;
-            }
-
-            .sidebar.show-text .brand-text {
-                max-width: min(320px, 100%);
+                font-size: clamp(26px, 7.2vw, 34px);
             }
 
             .sidebar.show-text .logo-container {
-                width: 0.86em;
-                height: 0.86em;
+                width: 0.92em;
+                height: 0.92em;
             }
         }
 
@@ -387,6 +392,8 @@
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Outfit:wght@400;600&display=swap"
         href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&family=Outfit:wght@400;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap">
 </head>
 
 <body>
