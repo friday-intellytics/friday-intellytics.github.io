@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Announcement</title>
+    <style>
+        :root {
+            --bg-color: #fcfcfc;
+            --text-color: #333;
+            --transition-speed: 0.6s;
+
+            --sidebar-bg: #ffffff;
+            --sidebar-border: rgba(0, 0, 0, 0.10);
+            --sidebar-shadow: 0 18px 55px rgba(0, 0, 0, 0.12);
+            --sidebar-width: 420px;
+            --sidebar-handle-width: 56px;
+            --sidebar-handle-protrude: 14px;
+            --sidebar-gap: 18px;
+            --sidebar-radius: 22px;
+
+            --ui-font: 'Outfit', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --brand-font: 'KaTeX_Math', 'Latin Modern Math', 'Computer Modern', 'CMU Serif', 'Cambria Math', Georgia, serif;
+        }
+
+        body {
+            --sidebar-reserved: calc(var(--sidebar-handle-width) + var(--sidebar-gap));
+
+            margin: 0;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            overflow-y: auto;
+            font-family: var(--ui-font);
+            transition: background-color var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body.sidebar-open {
+            --sidebar-reserved: calc(var(--sidebar-width) + var(--sidebar-gap));
+        }
+
+        .main {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 36px calc(24px + var(--sidebar-reserved)) 36px 24px;
+            transition: padding-right 360ms cubic-bezier(0.2, 0.9, 0.25, 1);
+        }
+
+        .hero {
+            max-width: 860px;
+            width: 100%;
+        }
+
+        .hero .kicker {
+            letter-spacing: 0.3em;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 12px;
+            opacity: 0.75;
+        }
+
+        .hero .hero-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: min(210px, 39vw);
+            aspect-ratio: 1 / 1;
+            margin: 18px auto 10px;
+        }
+
+        .hero h1 {
+            text-align: center;
+            margin: 14px 0 10px;
+            line-height: 1.03;
+        }
+
+        .hero h5 {
+            text-align: center;
+        }
+
+        .hero p {
+            margin: 0 auto;
+            font-size: clamp(16px, 2vw, 19px);
+            line-height: 1.55;
+            opacity: 0.85;
+            max-width: 64ch;
+        }
+
+        .logo-container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .large-triangle {
+            fill: var(--triangle-fill);
+            stroke: url(#logoGradient);
+            stroke-width: 3;
+            stroke-linejoin: round;
+            transition: fill var(--transition-speed) ease, stroke var(--transition-speed) ease;
+        }
+
+        .small-triangle {
+            fill: url(#logoGradient);
+            stroke: url(#logoGradient);
+            stroke-width: 3;
+            stroke-linejoin: round;
+            transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: inherit;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.1s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar:not(.dark-mode) .theme-toggle {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .theme-toggle:active {
+            transform: translateY(0);
+        }
+
+        .sidebar-top .theme-toggle {
+            padding: 10px 14px;
+            font-size: 13px;
+            border-radius: 999px;
+        }
+
+        .sidebar {
+            --text-color: #333;
+            --triangle-fill: black;
+            color: var(--text-color);
+
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            bottom: 18px;
+            width: var(--sidebar-width);
+            display: flex;
+            flex-direction: column;
+            background: var(--sidebar-bg);
+            border: 1px solid var(--sidebar-border);
+            border-radius: var(--sidebar-radius);
+            box-shadow: var(--sidebar-shadow);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transform: translateX(calc(var(--sidebar-width) - var(--sidebar-handle-width)));
+            transition: transform 360ms cubic-bezier(0.2, 0.9, 0.25, 1);
+            z-index: 200;
+        }
+
+        .sidebar.dark-mode {
+            --text-color: #fcfcfc;
+            --sidebar-bg: black;
+            --sidebar-border: rgba(255, 255, 255, 0.12);
+            --sidebar-shadow: 0 18px 55px rgba(0, 0, 0, 0.55);
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .sidebar-scrim {
+            position: fixed;
+            inset: 0;
+            background: transparent;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 150;
+        }
+
+        .sidebar-handle {
+            position: absolute;
+            top: 22px;
+            left: 0;
+            width: var(--sidebar-handle-width);
+            height: 140px;
+            border-radius: 16px 0 0 16px;
+            background: var(--sidebar-bg);
+            border: 1px solid var(--sidebar-border);
+            border-right: none;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.14);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            user-select: none;
+            touch-action: manipulation;
+            color: inherit;
+            transition: transform 220ms ease;
+        }
+
+        .sidebar.open .sidebar-handle {
+            transform: translateX(calc(-1 * var(--sidebar-handle-protrude)));
+        }
+
+        .sidebar-handle:hover {
+            transform: translateX(-4px);
+        }
+
+        .sidebar.open .sidebar-handle:hover {
+            transform: translateX(calc(-1 * var(--sidebar-handle-protrude) - 4px));
+        }
+
+        .handle-inner {
+            display: grid;
+            gap: 10px;
+            place-items: center;
+        }
+
+        .try-here {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 12px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        .handle-arrow {
+            width: 16px;
+            height: 16px;
+            border-right: 2px solid var(--text-color);
+            border-bottom: 2px solid var(--text-color);
+            transform: rotate(135deg);
+            opacity: 0.75;
+        }
+
+        .sidebar.open .handle-arrow {
+            transform: rotate(-45deg);
+        }
+
+        .sidebar:not(.open) .sidebar-handle {
+            animation: nudge 2.2s ease-in-out infinite;
+        }
+
+        @keyframes nudge {
+
+            0%,
+            70%,
+            100% {
+                transform: translateX(0);
+            }
+
+            80% {
+                transform: translateX(-7px);
+            }
+
+            90% {
+                transform: translateX(-2px);
+            }
+        }
+
+        .sidebar-top {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 18px 0;
+        }
+
+        .sidebar-body {
+            flex: 1;
+            display: grid;
+            place-items: center;
+            padding: 16px 12px 24px;
+        }
+
+        .sidebar-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-left: var(--sidebar-handle-width);
+        }
+
+        .preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+            gap: 14px;
+            max-width: 100%;
+            min-width: 0;
+            padding: 6px 10px;
+        }
+
+        .brand-text {
+            color: currentColor;
+            font-family: var(--brand-font);
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            font-size: 1em;
+            display: inline-block;
+            line-height: 1.28;
+            text-rendering: geometricPrecision;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 0.04em;
+            padding-bottom: 0.18em;
+            padding-right: 0.22em;
+            box-sizing: border-box;
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            min-width: 0;
+            transform: translateX(-10px);
+            transition: max-width 260ms ease, opacity 220ms ease, transform 260ms ease;
+        }
+
+        .sidebar.show-text .brand-text {
+            max-width: 100%;
+            opacity: 1;
+            transform: translateX(0);
+            overflow: visible;
+        }
+
+        .sidebar.page-2 .brand-text {
+            font-weight: 700;
+        }
+
+        .sidebar.page-3 {
+            --brand-font: 'Rubik Mono One', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+
+        .sidebar.page-3 .brand-text {
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        .sidebar.page-4 {
+            --brand-font: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .sidebar.page-4 .brand-text {
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+        }
+
+        .sidebar.page-5 {
+            --brand-font: 'Black Han Sans', 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .sidebar.page-5 .brand-text {
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        .sidebar .logo-container {
+            width: min(320px, 78%);
+            height: auto;
+            aspect-ratio: 1 / 1;
+        }
+
+        .sidebar.show-text .preview {
+            font-size: clamp(30px, 4.2vw, 44px);
+        }
+
+        .sidebar.show-text .logo-container {
+            width: 1.3em;
+            height: 1.3em;
+            aspect-ratio: 1 / 1;
+            flex: 0 0 auto;
+        }
+
+        .sidebar-bottom {
+            padding: 10px 16px 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pager {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--sidebar-border);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .sidebar:not(.dark-mode) .pager {
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .pager button {
+            width: 30px;
+            height: 30px;
+            border-radius: 999px;
+            border: 1px solid var(--sidebar-border);
+            background: transparent;
+            color: inherit;
+            font-family: var(--ui-font);
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: transform 120ms ease, background 160ms ease, border-color 160ms ease;
+        }
+
+        .pager button:hover {
+            transform: translateY(-1px);
+        }
+
+        .pager button[aria-current="page"] {
+            background: rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.18);
+        }
+
+        .sidebar.dark-mode .pager button[aria-current="page"] {
+            background: rgba(255, 255, 255, 0.10);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        .pager-count {
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0.75;
+            padding-left: 2px;
+            user-select: none;
+        }
+
+        @media (max-width: 1100px) {
+            body,
+            body.sidebar-open {
+                --sidebar-reserved: calc(var(--sidebar-handle-width) + var(--sidebar-gap));
+            }
+
+            body.sidebar-open .sidebar-scrim {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+
+        @media (max-width: 860px) {
+            :root {
+                --sidebar-width: 360px;
+            }
+
+            .hero h1 {
+                font-size: clamp(30px, 8vw, 50px);
+            }
+        }
+
+        @media (max-width: 520px) {
+            :root {
+                --sidebar-width: 320px;
+                --sidebar-handle-width: 52px;
+            }
+
+            .sidebar {
+                top: 12px;
+                right: 12px;
+                bottom: 12px;
+            }
+
+            .sidebar-handle {
+                height: 132px;
+            }
+
+            .sidebar.show-text .preview {
+                font-size: clamp(26px, 7.2vw, 34px);
+            }
+
+            .sidebar.show-text .logo-container {
+                width: 1.1em;
+                height: 1.1em;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sidebar:not(.open) .sidebar-handle {
+                animation: none;
+            }
+
+            .sidebar {
+                transition: none;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="vendor/latex-math/latex-math.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&family=Outfit:wght@400;600&family=Rubik+Mono+One&display=swap">
+</head>
+
+<body>
+    <main class="main">
+        <section class="hero" aria-label="Logo Announcement">
+            <div class="kicker">Introducting Friday's logo </div>
+            <div class="hero-logo" aria-label="Friday logo">
+                <svg viewBox="0 0 100 100" role="img">
+                    <title>Friday logo</title>
+                    <defs>
+                        <linearGradient id="logoGradientHero" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="55%" style="stop-color:orange;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:yellow;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+
+                    <polygon class="large-triangle" points="10,10 90,10 50,90" style="stroke:url(#logoGradientHero)" />
+                    <polygon class="small-triangle" points="28,15 82,15 55,70"
+                        style="fill:url(#logoGradientHero);stroke:url(#logoGradientHero)" />
+                </svg>
+            </div>
+            <h1>It is called <b><i>Del</i></b></h1>
+            <h5>Try look variations here -> </h5>
+            <br>
+
+            <p>In math, <strong>del (âˆ‡)</strong> is the operator behind the gradient. When applied, it points in the
+                direction of the steepest increase.</p>
+
+            <br>
+
+            <p>In data science, learning systems improve by applying <strong>âˆ‡
+
+                </strong> to error. Start with a guess,
+                follow the gradient
+                descent,
+                and adjust weights to reduce error.</p>
+
+            <br>
+
+            <p>Thatâ€™s how analytics works too. Start with a hypothesis. Follow the direction of the strongest signal,
+                and converge at the steepest gain in insight.</p>
+
+            <br>
+
+            <p>Relatable. Nerdy (âˆ‡f). Aesthetic. So we made it the logo.</p>
+
+            <p><strong>Del Friday.</strong></p>
+
+            <br>
+
+            <p>Also:</p>
+
+            <p>â€¢ The domain <strong>delfriday.ai</strong> is available. Cleaner and catchier than
+                fridayintellytics.com</p>
+
+            <p>â€¢ The inverted triangle is also the shape of Iron Manâ€™s latest arc reactor</p>
+
+        </section>
+    </main>
+
+    <div class="sidebar-scrim" id="sidebar-scrim" aria-hidden="true" hidden></div>
+
+    <aside class="sidebar page-1" id="sidebar" aria-label="Interactive Logo Sidebar">
+        <button class="sidebar-handle" id="sidebar-handle" aria-label="Open interactive preview" aria-expanded="false">
+            <div class="handle-inner" aria-hidden="true">
+                <div class="handle-arrow"></div>
+                <div class="try-here">Try Here</div>
+            </div>
+        </button>
+
+        <div class="sidebar-content">
+            <div class="sidebar-top">
+                <button class="theme-toggle" id="text-toggle" aria-label="Toggle brand text" aria-pressed="false">
+                    <span id="text-toggle-text">Show Text</span>
+                </button>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+                    <span id="toggle-text">Dark Mode</span>
+                </button>
+            </div>
+
+            <div class="sidebar-body">
+                <div class="preview" aria-label="Logo preview">
+                    <div class="logo-container">
+                        <svg viewBox="0 0 100 100" class="logo-svg">
+                            <defs>
+                                <linearGradient id="logoGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="55%" style="stop-color:orange;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:yellow;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+
+                            <polygon class="large-triangle" points="10,10 90,10 50,90" />
+
+                            <polygon class="small-triangle" points="28,15 82,15 55,70" />
+                        </svg>
+                    </div>
+
+                    <div class="brand-text" id="brand-text" aria-hidden="true">friday</div>
+                </div>
+            </div>
+
+            <div class="sidebar-bottom">
+                <nav class="pager" aria-label="Preview pages">
+                    <button type="button" class="pager-btn" data-page="1" aria-label="Page 1"
+                        aria-current="page">1</button>
+                    <button type="button" class="pager-btn" data-page="2" aria-label="Page 2">2</button>
+                    <button type="button" class="pager-btn" data-page="3" aria-label="Page 3">3</button>
+                    <button type="button" class="pager-btn" data-page="4" aria-label="Page 4">4</button>
+                    <button type="button" class="pager-btn" data-page="5" aria-label="Page 5">5</button>
+                    <div class="pager-count" id="pager-count" aria-hidden="true">1 / 5</div>
+                </nav>
+            </div>
+        </div>
+    </aside>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const toggleText = document.getElementById('toggle-text');
+
+        const sidebar = document.getElementById('sidebar');
+        const sidebarHandle = document.getElementById('sidebar-handle');
+        const sidebarScrim = document.getElementById('sidebar-scrim');
+        const textToggle = document.getElementById('text-toggle');
+        const textToggleText = document.getElementById('text-toggle-text');
+        const brandText = document.getElementById('brand-text');
+        const pagerCount = document.getElementById('pager-count');
+        const pagerButtons = Array.from(document.querySelectorAll('.pager-btn'));
+
+        const pages = [1, 2, 3, 4, 5];
+        const totalPages = pages.length;
+
+        function setPage(pageNumber) {
+            const page = pages.includes(pageNumber) ? pageNumber : 1;
+
+            for (const p of pages) {
+                sidebar.classList.toggle(`page-${p}`, p === page);
+            }
+
+            brandText.textContent = page >= 4 ? 'FRIDAY' : 'friday';
+
+            if (page !== 1 && !sidebar.classList.contains('show-text')) {
+                sidebar.classList.add('show-text');
+                textToggle.setAttribute('aria-pressed', 'true');
+                textToggleText.textContent = 'Hide Text';
+                brandText.setAttribute('aria-hidden', 'false');
+            }
+
+            for (const btn of pagerButtons) {
+                const isCurrent = Number(btn.dataset.page) === page;
+                if (isCurrent) {
+                    btn.setAttribute('aria-current', 'page');
+                } else {
+                    btn.removeAttribute('aria-current');
+                }
+            }
+
+            pagerCount.textContent = `${page} / ${totalPages}`;
+        }
+
+        themeToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('dark-mode');
+            const isDark = sidebar.classList.contains('dark-mode');
+            toggleText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        });
+
+        textToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('show-text');
+            const showText = sidebar.classList.contains('show-text');
+            textToggle.setAttribute('aria-pressed', String(showText));
+            textToggleText.textContent = showText ? 'Hide Text' : 'Show Text';
+            brandText.setAttribute('aria-hidden', String(!showText));
+        });
+
+        for (const btn of pagerButtons) {
+            btn.addEventListener('click', () => setPage(Number(btn.dataset.page)));
+        }
+
+        function setSidebarOpen(isOpen) {
+            sidebar.classList.toggle('open', isOpen);
+            document.body.classList.toggle('sidebar-open', isOpen);
+            sidebarHandle.setAttribute('aria-expanded', String(isOpen));
+            sidebarHandle.setAttribute('aria-label', isOpen ? 'Close interactive preview' : 'Open interactive preview');
+            sidebarScrim.toggleAttribute('hidden', !isOpen);
+            try {
+                localStorage.setItem('fridaySidebarOpen', String(isOpen));
+            } catch { }
+        }
+
+        // Default page = 1 (italic regular)
+        setPage(1);
+
+        // Click/tap handle
+        sidebarHandle.addEventListener('click', () => {
+            setSidebarOpen(!sidebar.classList.contains('open'));
+        });
+
+        sidebarScrim.addEventListener('click', () => setSidebarOpen(false));
+
+        // Default open on desktop; collapsed (handle-only) on smaller screens.
+        const isSmallScreen = window.matchMedia('(max-width: 1100px)').matches;
+        let initialSidebarOpen = !isSmallScreen;
+        try {
+            const saved = localStorage.getItem('fridaySidebarOpen');
+            if (saved === 'true') initialSidebarOpen = true;
+            if (saved === 'false') initialSidebarOpen = false;
+        } catch { }
+        setSidebarOpen(initialSidebarOpen);
+
+        // Swipe from the right edge to open/close (mobile-friendly).
+        let startX = null;
+        let tracking = false;
+
+        function onTouchStart(e) {
+            if (!e.touches || e.touches.length !== 1) return;
+            const x = e.touches[0].clientX;
+            const w = window.innerWidth;
+            const edge = 26;
+
+            // Start tracking if the user starts from the right edge or on the handle/sidebar.
+            const startedOnEdge = x > (w - edge);
+            const startedOnSidebar = sidebar.contains(e.target);
+
+            if (!startedOnEdge && !startedOnSidebar) return;
+
+            tracking = true;
+            startX = x;
+        }
+
+        function onTouchMove(e) {
+            if (!tracking || startX === null) return;
+            const x = e.touches[0].clientX;
+            const dx = x - startX;
+
+            // Right-to-left swipe opens; left-to-right swipe closes.
+            if (!sidebar.classList.contains('open') && dx < -52) {
+                setSidebarOpen(true);
+                tracking = false;
+                startX = null;
+            } else if (sidebar.classList.contains('open') && dx > 52) {
+                setSidebarOpen(false);
+                tracking = false;
+                startX = null;
+            }
+        }
+
+        function onTouchEnd() {
+            tracking = false;
+            startX = null;
+        }
+
+        document.addEventListener('touchstart', onTouchStart, { passive: true });
+        document.addEventListener('touchmove', onTouchMove, { passive: true });
+        document.addEventListener('touchend', onTouchEnd, { passive: true });
+    </script>
+</body>
+
+</html>

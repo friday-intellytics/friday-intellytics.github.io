@@ -1,0 +1,19 @@
+/* Minimal local font pack for a Computer-Modern-ish math italic look.
+   Provides KaTeX_Math italic weights used by the "Friday" wordmark. */
+
+@font-face {
+  font-family: "KaTeX_Math";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/KaTeX_Math-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "KaTeX_Math";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/KaTeX_Math-BoldItalic.woff2") format("woff2");
+}
+
