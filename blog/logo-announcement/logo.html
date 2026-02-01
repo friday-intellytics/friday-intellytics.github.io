@@ -318,6 +318,17 @@
             text-overflow: clip;
         }
 
+        /* Page variations for comparing wordmark weight */
+        .sidebar.page-1 .brand-text {
+            font-weight: 400;
+        }
+
+        .sidebar.page-2 .brand-text {
+            font-style: italic;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
         .sidebar .logo-container {
             width: min(320px, 78%);
             height: auto;
@@ -336,6 +347,65 @@
             height: 1.3em;
             aspect-ratio: 1 / 1;
             flex: 0 0 auto;
+        }
+
+        .sidebar-bottom {
+            padding: 10px 16px 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pager {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--sidebar-border);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .sidebar:not(.dark-mode) .pager {
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .pager button {
+            width: 30px;
+            height: 30px;
+            border-radius: 999px;
+            border: 1px solid var(--sidebar-border);
+            background: transparent;
+            color: inherit;
+            font-family: var(--ui-font);
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: transform 120ms ease, background 160ms ease, border-color 160ms ease;
+        }
+
+        .pager button:hover {
+            transform: translateY(-1px);
+        }
+
+        .pager button[aria-current="page"] {
+            background: rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.18);
+        }
+
+        .sidebar.dark-mode .pager button[aria-current="page"] {
+            background: rgba(255, 255, 255, 0.10);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        .pager-count {
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0.75;
+            padding-left: 2px;
+            user-select: none;
         }
 
         @media (max-width: 860px) {
@@ -388,10 +458,6 @@
             }
         }
     </style>
-    <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Outfit:wght@400;600&display=swap"
-        href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&family=Outfit:wght@400;600&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="vendor/latex-math/latex-math.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap">
 </head>
@@ -408,7 +474,7 @@
         </section>
     </main>
 
-    <aside class="sidebar" id="sidebar" aria-label="Interactive Logo Sidebar">
+    <aside class="sidebar page-1" id="sidebar" aria-label="Interactive Logo Sidebar">
         <button class="sidebar-handle" id="sidebar-handle" aria-label="Open interactive preview" aria-expanded="false">
             <div class="handle-inner" aria-hidden="true">
                 <div class="handle-arrow"></div>
@@ -448,6 +514,14 @@
                     <div class="brand-text" id="brand-text" aria-hidden="true">friday</div>
                 </div>
             </div>
+
+            <div class="sidebar-bottom">
+                <nav class="pager" aria-label="Preview pages">
+                    <button type="button" class="pager-btn" data-page="1" aria-label="Page 1" aria-current="page">1</button>
+                    <button type="button" class="pager-btn" data-page="2" aria-label="Page 2">2</button>
+                    <div class="pager-count" id="pager-count" aria-hidden="true">1 / 2</div>
+                </nav>
+            </div>
         </div>
     </aside>
 
@@ -460,6 +534,34 @@
         const textToggle = document.getElementById('text-toggle');
         const textToggleText = document.getElementById('text-toggle-text');
         const brandText = document.getElementById('brand-text');
+        const pagerCount = document.getElementById('pager-count');
+        const pagerButtons = Array.from(document.querySelectorAll('.pager-btn'));
+
+        function setPage(pageNumber) {
+            const page = pageNumber === 2 ? 2 : 1;
+
+            sidebar.classList.toggle('page-1', page === 1);
+            sidebar.classList.toggle('page-2', page === 2);
+
+            // Page 2 is a wordmark comparison: ensure the text is visible.
+            if (page === 2 && !sidebar.classList.contains('show-text')) {
+                sidebar.classList.add('show-text');
+                textToggle.setAttribute('aria-pressed', 'true');
+                textToggleText.textContent = 'Hide Text';
+                brandText.setAttribute('aria-hidden', 'false');
+            }
+
+            for (const btn of pagerButtons) {
+                const isCurrent = Number(btn.dataset.page) === page;
+                if (isCurrent) {
+                    btn.setAttribute('aria-current', 'page');
+                } else {
+                    btn.removeAttribute('aria-current');
+                }
+            }
+
+            pagerCount.textContent = `${page} / 2`;
+        }
 
         themeToggle.addEventListener('click', () => {
             sidebar.classList.toggle('dark-mode');
@@ -475,11 +577,18 @@
             brandText.setAttribute('aria-hidden', String(!showText));
         });
 
+        for (const btn of pagerButtons) {
+            btn.addEventListener('click', () => setPage(Number(btn.dataset.page)));
+        }
+
         function setSidebarOpen(isOpen) {
             sidebar.classList.toggle('open', isOpen);
             sidebarHandle.setAttribute('aria-expanded', String(isOpen));
             sidebarHandle.setAttribute('aria-label', isOpen ? 'Close interactive preview' : 'Open interactive preview');
         }
+
+        // Default page = 1 (italic regular)
+        setPage(1);
 
         // Click/tap handle
         sidebarHandle.addEventListener('click', () => {
