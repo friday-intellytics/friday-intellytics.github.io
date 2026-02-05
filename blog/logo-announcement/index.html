@@ -352,26 +352,6 @@
             font-weight: 700;
         }
 
-        .sidebar.page-3 {
-            --brand-font: 'Rubik Mono One', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-        }
-
-        .sidebar.page-3 .brand-text {
-            font-style: normal;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-        }
-
-        .sidebar.page-4 {
-            --brand-font: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        }
-
-        .sidebar.page-4 .brand-text {
-            font-style: normal;
-            font-weight: 400;
-            letter-spacing: 0.04em;
-        }
-
         .sidebar.page-5 {
             --brand-font: 'Black Han Sans', 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
@@ -380,6 +360,12 @@
             font-style: normal;
             font-weight: 400;
             letter-spacing: 0.02em;
+        }
+
+        .sidebar.page-6 .brand-text {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 700;
+            font-style: normal;
         }
 
         .sidebar .logo-container {
@@ -516,10 +502,32 @@
                 transition: none;
             }
         }
+
+        .icon-view-symbol {
+            display: none;
+            font-size: 54px;
+            font-family: var(--brand-font);
+            /* Uses KaTeX_Math or similar */
+            color: var(--text-color);
+            line-height: 1;
+        }
+
+        .sidebar.icon-mode .logo-container,
+        .sidebar.icon-mode .brand-text {
+            display: none !important;
+        }
+
+        .sidebar.icon-mode .icon-view-symbol {
+            display: block;
+        }
+
+        .icon-view-symbol .backslash {
+            font-size: 42px;
+        }
     </style>
     <link rel="stylesheet" href="vendor/latex-math/latex-math.css">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&family=Outfit:wght@400;600&family=Rubik+Mono+One&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Outfit:wght@400;600&display=swap">
 </head>
 
 <body>
@@ -542,7 +550,7 @@
                 </svg>
             </div>
             <h1>It is called <b><i>Del</i></b></h1>
-            <h5>Try and let me know which font variation (1 to 5) you like -> </h5>
+            <h5>Try and let me know which font variation (2, 5 or 6) you like -> </h5>
             <br>
 
             <p>In math, <strong>del (∇)</strong> is the operator behind the gradient. When applied, it points in the
@@ -581,7 +589,7 @@
 
     <div class="sidebar-scrim" id="sidebar-scrim" aria-hidden="true" hidden></div>
 
-    <aside class="sidebar page-1" id="sidebar" aria-label="Interactive Logo Sidebar">
+    <aside class="sidebar page-2" id="sidebar" aria-label="Interactive Logo Sidebar">
         <button class="sidebar-handle" id="sidebar-handle" aria-label="Open interactive preview" aria-expanded="false">
             <div class="handle-inner" aria-hidden="true">
                 <div class="handle-arrow"></div>
@@ -596,6 +604,9 @@
                 </button>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
                     <span id="toggle-text">Dark Mode</span>
+                </button>
+                <button class="theme-toggle" id="icon-view-toggle" aria-label="Icon View">
+                    <span id="icon-view-text">Icon View</span>
                 </button>
             </div>
 
@@ -617,18 +628,17 @@
                     </div>
 
                     <div class="brand-text" id="brand-text" aria-hidden="true">friday</div>
+                    <div class="icon-view-symbol" aria-hidden="true"><span class="backslash">\</span>∇</div>
                 </div>
             </div>
 
             <div class="sidebar-bottom">
                 <nav class="pager" aria-label="Preview pages">
-                    <button type="button" class="pager-btn" data-page="1" aria-label="Page 1"
-                        aria-current="page">1</button>
-                    <button type="button" class="pager-btn" data-page="2" aria-label="Page 2">2</button>
-                    <button type="button" class="pager-btn" data-page="3" aria-label="Page 3">3</button>
-                    <button type="button" class="pager-btn" data-page="4" aria-label="Page 4">4</button>
+                    <button type="button" class="pager-btn" data-page="2" aria-label="Page 2"
+                        aria-current="page">2</button>
                     <button type="button" class="pager-btn" data-page="5" aria-label="Page 5">5</button>
-                    <div class="pager-count" id="pager-count" aria-hidden="true">1 / 5</div>
+                    <button type="button" class="pager-btn" data-page="6" aria-label="Page 6">6</button>
+                    <div class="pager-count" id="pager-count" aria-hidden="true">1 / 3</div>
                 </nav>
             </div>
         </div>
@@ -636,6 +646,8 @@
 
     <script>
         const themeToggle = document.getElementById('theme-toggle');
+        const iconViewToggle = document.getElementById('icon-view-toggle');
+        const iconViewText = document.getElementById('icon-view-text');
         const toggleText = document.getElementById('toggle-text');
 
         const sidebar = document.getElementById('sidebar');
@@ -647,17 +659,21 @@
         const pagerCount = document.getElementById('pager-count');
         const pagerButtons = Array.from(document.querySelectorAll('.pager-btn'));
 
-        const pages = [1, 2, 3, 4, 5];
+        const pages = [2, 5, 6];
         const totalPages = pages.length;
 
         function setPage(pageNumber) {
-            const page = pages.includes(pageNumber) ? pageNumber : 1;
+            const page = pages.includes(pageNumber) ? pageNumber : 2;
 
-            for (const p of pages) {
+            for (const p of [1, 2, 3, 4, 5, 6]) {
                 sidebar.classList.toggle(`page-${p}`, p === page);
             }
 
-            brandText.textContent = page >= 4 ? 'FRIDAY' : 'friday';
+            if (page === 6) {
+                brandText.textContent = 'FRIDAY';
+            } else {
+                brandText.textContent = page >= 4 ? 'FRIDAY' : 'friday';
+            }
 
             if (page !== 1 && !sidebar.classList.contains('show-text')) {
                 sidebar.classList.add('show-text');
@@ -675,7 +691,7 @@
                 }
             }
 
-            pagerCount.textContent = `${page} / ${totalPages}`;
+            pagerCount.textContent = `${pages.indexOf(page) + 1} / ${totalPages}`;
         }
 
         themeToggle.addEventListener('click', () => {
@@ -685,11 +701,29 @@
         });
 
         textToggle.addEventListener('click', () => {
+            if (sidebar.classList.contains('icon-mode')) {
+                sidebar.classList.remove('icon-mode');
+                iconViewText.textContent = 'Icon View';
+            }
+
             sidebar.classList.toggle('show-text');
             const showText = sidebar.classList.contains('show-text');
             textToggle.setAttribute('aria-pressed', String(showText));
             textToggleText.textContent = showText ? 'Hide Text' : 'Show Text';
             brandText.setAttribute('aria-hidden', String(!showText));
+        });
+
+        iconViewToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('icon-mode');
+            const isIconMode = sidebar.classList.contains('icon-mode');
+            iconViewText.textContent = isIconMode ? 'Logo View' : 'Icon View';
+
+            if (isIconMode && sidebar.classList.contains('show-text')) {
+                sidebar.classList.remove('show-text');
+                textToggle.setAttribute('aria-pressed', 'false');
+                textToggleText.textContent = 'Show Text';
+                brandText.setAttribute('aria-hidden', 'true');
+            }
         });
 
         for (const btn of pagerButtons) {
@@ -708,7 +742,7 @@
         }
 
         // Default page = 1 (italic regular)
-        setPage(1);
+        setPage(2);
 
         // Click/tap handle
         sidebarHandle.addEventListener('click', () => {
