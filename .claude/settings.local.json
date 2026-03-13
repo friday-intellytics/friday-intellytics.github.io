@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /m/friday/repos/friday-intellytics.github.io log --oneline | head -20)",
+      "Bash(cd \"M:/friday/repos/friday-intellytics.github.io\" && python -m http.server 8000)"
+    ]
+  }
+}

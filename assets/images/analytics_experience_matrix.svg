@@ -1,0 +1,78 @@
+<svg width="100%" viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    svg { --s: #1a1a1a; --b: #c0bfbd; }
+    .th { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 600; fill: #1a1a1a; font-size: 13px; }
+    .ts { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 400; fill: #636360; font-size: 12px; }
+    .c-gray rect { fill: #f0f0ee; stroke: #a0a09e; }
+    .c-gray .th { fill: #4a4a48; }
+    .c-gray .ts { fill: #636360; }
+    .c-teal rect { fill: #e0f5f0; stroke: #1a9a7a; }
+    .c-teal .th { fill: #1a1a1a; }
+    .c-teal .ts { fill: #2a6e5e; }
+    .c-coral rect { fill: #fde8dc; stroke: #e8680c; }
+    .c-coral .th { fill: #1a1a1a; }
+    .c-coral .ts { fill: #8a4a20; }
+    .c-amber rect { fill: #fef3dc; stroke: #c8930a; }
+    .c-amber .th { fill: #1a1a1a; }
+    .c-amber .ts { fill: #7a5a10; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text class="th" x="340" y="32" text-anchor="middle" style="font-size:16px">The analytics experience matrix</text>
+
+  <line x1="140" y1="70" x2="140" y2="460" stroke="var(--s)" stroke-width="1" marker-start="url(#arrow)"/>
+  <line x1="140" y1="460" x2="640" y2="460" stroke="var(--s)" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <text class="ts" x="60" y="110" text-anchor="middle" style="font-weight:500">Designed for</text>
+  <text class="ts" x="60" y="126" text-anchor="middle" style="font-weight:500">analysts</text>
+  <text class="ts" x="60" y="420" text-anchor="middle" style="font-weight:500">Designed for</text>
+  <text class="ts" x="60" y="436" text-anchor="middle" style="font-weight:500">executives</text>
+
+  <text class="ts" x="180" y="490" text-anchor="start" style="font-weight:500">Delivers artifacts</text>
+  <text class="ts" x="580" y="490" text-anchor="end" style="font-weight:500">Delivers answers</text>
+
+  <line x1="390" y1="70" x2="390" y2="460" stroke="var(--b)" stroke-width="0.5" stroke-dasharray="4 4"/>
+  <line x1="140" y1="265" x2="640" y2="265" stroke="var(--b)" stroke-width="0.5" stroke-dasharray="4 4"/>
+
+  <!-- Q1: Top-left — Better tools for analysts -->
+  <g class="c-gray">
+    <rect x="170" y="95" width="190" height="140" rx="12" stroke-width="0.5"/>
+    <text class="th" x="265" y="130" text-anchor="middle">Better tools for analysts</text>
+    <text class="ts" x="265" y="152" text-anchor="middle">More tools, same</text>
+    <text class="ts" x="265" y="168" text-anchor="middle">fragmented experience</text>
+    <text class="ts" x="265" y="196" text-anchor="middle" style="font-style:italic">Tried and stalled</text>
+  </g>
+
+  <!-- Q2: Top-right — AI-empowered analysts -->
+  <g class="c-teal">
+    <rect x="420" y="95" width="190" height="140" rx="12" stroke-width="1.5"/>
+    <text class="th" x="515" y="125" text-anchor="middle">AI-empowered analysts</text>
+    <text class="ts" x="515" y="148" text-anchor="middle">AI assists, human</text>
+    <text class="ts" x="515" y="164" text-anchor="middle">judgment decides</text>
+    <text class="th" x="515" y="200" text-anchor="middle" style="font-size:13px">&larr; What's next</text>
+  </g>
+
+  <!-- Q3: Bottom-left — Dashboards for executives -->
+  <g class="c-coral">
+    <rect x="170" y="290" width="190" height="140" rx="12" stroke-width="0.5"/>
+    <text class="th" x="265" y="325" text-anchor="middle">Dashboards for execs</text>
+    <text class="ts" x="265" y="348" text-anchor="middle">Artifacts, often</text>
+    <text class="ts" x="265" y="364" text-anchor="middle">underleveraged</text>
+    <text class="ts" x="265" y="392" text-anchor="middle" style="font-style:italic">Where most orgs are</text>
+  </g>
+
+  <!-- Q4: Bottom-right — AI agents for executives -->
+  <g class="c-amber">
+    <rect x="420" y="290" width="190" height="140" rx="12" stroke-width="0.5"/>
+    <text class="th" x="515" y="325" text-anchor="middle">AI agents for execs</text>
+    <text class="ts" x="515" y="348" text-anchor="middle">Fast answers, but</text>
+    <text class="ts" x="515" y="364" text-anchor="middle">trust is unverified</text>
+    <text class="ts" x="515" y="392" text-anchor="middle" style="font-style:italic">Where the momentum is</text>
+  </g>
+
+  <text class="ts" x="340" y="510" text-anchor="middle" style="font-style:italic">fridayintellytics.com</text>
+</svg>
