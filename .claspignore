@@ -1,4 +1,0 @@
-# Only push Apps Script files; ignore the rest of the site
-**
-!Code.gs
-!appsscript.json

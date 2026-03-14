@@ -413,15 +413,18 @@
         <h1>Contact <span class="highlight">Us</span></h1>
         <p class="hero-tagline">Have a question about AI-assisted analytics or want to unlock your data team? Send us a message and we’ll get back to you.</p>
 
-        <!-- Form posts to Apps Script Web App (deployed via clasp). -->
-        <form id="contact-form" class="contact-form-wrap" action="https://script.google.com/macros/s/AKfycbzA98iiFhTW8jX8Qw6WZ82NpKQpEPK7L9Km5GmloLfu3qgbasG_XUqupYnXst2dZFbwNQ/exec" method="POST">
+        <!-- Form submits directly to Web3Forms from the browser. -->
+        <form id="contact-form" class="contact-form-wrap" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="b5a01469-1c38-420c-a630-41cf89c29e4b" />
+          <input type="hidden" name="from_name" value="Friday Intellytics" />
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display: none;" />
           <div class="form-row">
             <label for="name">Name <span class="required" aria-hidden="true">*</span></label>
             <input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name" />
           </div>
           <div class="form-row">
             <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="_replyto" required placeholder="you@example.com" autocomplete="email" />
+            <input type="email" id="email" name="email" required placeholder="you@example.com" autocomplete="email" />
           </div>
           <div class="form-row">
             <label for="subject">Subject</label>
@@ -451,47 +454,57 @@
       var msg = document.getElementById('form-message');
       if (!form || !btn || !msg) return;
 
+      function resetButton() {
+        btn.disabled = false;
+        btn.innerHTML = 'Send message <span class="btn-arrow" aria-hidden="true">&rarr;</span>';
+      }
+
+      function setMessage(type, text) {
+        msg.className = 'form-message' + (type ? ' ' + type : '');
+        msg.textContent = text;
+        msg.style.display = text ? 'block' : 'none';
+      }
+
+      function finishSubmission(type, text, shouldReset) {
+        resetButton();
+        setMessage(type, text);
+        if (shouldReset) form.reset();
+      }
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var action = form.action;
-        if (action.indexOf('APPS_SCRIPT_WEB_APP_DEPLOYMENT_ID') !== -1) {
-          msg.className = 'form-message error';
-          msg.textContent = 'Form backend not configured. Run clasp deploy and set the Web App URL in contact/index.html.';
-          msg.style.display = 'block';
+        var botcheck = form.querySelector('input[name="botcheck"]');
+        if (botcheck && botcheck.checked) {
+          finishSubmission('error', 'Spam check failed. Please try again.', false);
           return;
         }
+
         btn.disabled = true;
-        btn.textContent = 'Sending…';
-        msg.className = 'form-message';
-        msg.textContent = '';
-        msg.style.display = 'none';
+        btn.textContent = 'Sending...';
+        setMessage('', '');
 
         var formData = new FormData(form);
-        var body = new URLSearchParams(formData).toString();
+        var payload = JSON.stringify(Object.fromEntries(formData.entries()));
+
         fetch(action, {
           method: 'POST',
-          body: body,
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: payload
         })
-          .then(function (r) { return r.json().then(function (data) { return { ok: r.ok, data: data }; }); })
-          .then(function (res) {
-            if (res.ok && res.data && res.data.success) {
-              msg.className = 'form-message success';
-              msg.textContent = 'Thanks! Your message has been sent. We’ll get back to you soon.';
-              msg.style.display = 'block';
-              form.reset();
-            } else {
-              throw new Error(res.data && res.data.error ? res.data.error : 'Submit failed');
+          .then(async function (response) {
+            var data = await response.json();
+            if (response.ok && data.success) {
+              finishSubmission('success', 'Thanks! Your message has been sent. We\'ll get back to you soon.', true);
+              return;
             }
+            throw new Error(data.message || 'Submit failed');
           })
           .catch(function (err) {
-            msg.className = 'form-message error';
-            msg.textContent = err.message || 'Something went wrong. Please email us at hello@fridayintellytics.com.';
-            msg.style.display = 'block';
-          })
-          .finally(function () {
-            btn.disabled = false;
-            btn.innerHTML = 'Send message <span class="btn-arrow" aria-hidden="true">&rarr;</span>';
+            finishSubmission('error', err.message || 'Something went wrong. Please email us at hello@fridayintellytics.com.', false);
           });
       });
     })();
