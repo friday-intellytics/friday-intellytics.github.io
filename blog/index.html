@@ -438,6 +438,29 @@
     }
 
     /* â”€â”€ FOOTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* Announcements: horizontal scroll, equal-width cards (base) */
+    #announcements .post-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      max-width: none;
+      margin: 0;
+      padding: clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 4rem) 1rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    #announcements .post-list::-webkit-scrollbar { height: 6px; }
+    #announcements .post-list::-webkit-scrollbar-track { background: transparent; }
+    #announcements .post-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    #announcements .post-list .post-card {
+      flex: 1 1 0;
+      min-width: 0;
+      scroll-snap-align: start;
+    }
     .footer {
       padding: 3rem clamp(1.5rem, 5vw, 4rem);
       border-top: 1px solid var(--border-light);
