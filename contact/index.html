@@ -419,8 +419,8 @@
           <input type="hidden" name="from_name" value="Friday Intellytics" />
           <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display: none;" />
           <div class="form-row">
-            <label for="name">Name <span class="required" aria-hidden="true">*</span></label>
-            <input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name" />
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" />
           </div>
           <div class="form-row">
             <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
@@ -431,8 +431,8 @@
             <input type="text" id="subject" name="subject" placeholder="What’s this about?" />
           </div>
           <div class="form-row">
-            <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
-            <textarea id="message" name="message" required placeholder="Tell us how we can help…" rows="5"></textarea>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us how we can help…" rows="5"></textarea>
           </div>
           <div class="form-submit">
             <button type="submit" class="btn btn-primary" id="form-submit-btn">
@@ -485,6 +485,12 @@
         setMessage('', '');
 
         var formData = new FormData(form);
+        var messageField = form.querySelector('textarea[name="message"]');
+        var fallbackMessage = messageField ? messageField.placeholder : '';
+        var messageValue = formData.get('message');
+        if (!messageValue || !String(messageValue).trim()) {
+          formData.set('message', fallbackMessage);
+        }
         var payload = JSON.stringify(Object.fromEntries(formData.entries()));
 
         fetch(action, {
