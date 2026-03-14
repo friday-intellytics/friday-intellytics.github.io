@@ -438,8 +438,8 @@
     }
 
     /* â”€â”€ FOOTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    /* Announcements: horizontal scroll, equal-width cards (base) */
-    #announcements .post-list {
+    /* Updates section: horizontal scroll, equal-width cards (base) */
+    #updates .post-list {
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
@@ -453,10 +453,10 @@
       scrollbar-width: thin;
       scrollbar-color: var(--border) transparent;
     }
-    #announcements .post-list::-webkit-scrollbar { height: 6px; }
-    #announcements .post-list::-webkit-scrollbar-track { background: transparent; }
-    #announcements .post-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-    #announcements .post-list .post-card {
+    #updates .post-list::-webkit-scrollbar { height: 6px; }
+    #updates .post-list::-webkit-scrollbar-track { background: transparent; }
+    #updates .post-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    #updates .post-list .post-card {
       flex: 1 1 0;
       min-width: 0;
       scroll-snap-align: start;
@@ -900,7 +900,7 @@
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Friday Perspectives",
-    "description": "Essays and announcements for data teams navigating how analytics is changing.",
+    "description": "Essays and insights for data teams navigating how analytics is changing.",
     "url": "https://fridayintellytics.com/blog/",
     "image": "https://fridayintellytics.com/assets/images/friday-share-card.png",
     "keywords": ["AI-Assisted Analytics", "Analytics Experience", "Fast Insights"],
@@ -1021,8 +1021,8 @@
       <span>Newsletter series. Future of Analytics.</span>
     </div>
     <div class="metric">
-      <strong>1</strong>
-      <span>Announcement</span>
+      <strong>2</strong>
+      <span>Updates</span>
     </div>
     <div class="metric">
       <strong>4</strong>
@@ -1146,22 +1146,22 @@
   </div>
   </section>
 
-  <!-- â”€â”€ ANNOUNCEMENTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section class="section-shell" id="announcements" aria-label="Announcements">
+  <!-- â”€â”€ UPDATES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <section class="section-shell" id="updates" aria-label="Updates">
   <div class="section-top">
     <div class="section-top-copy">
-      <div class="section-eyebrow">Announcements</div>
+      <div class="section-eyebrow">Updates</div>
             
     </div>
   </div>
 
-  <section class="post-list" aria-label="Announcements">
+  <section class="post-list" aria-label="Updates">
 
     <a href="logo-announcement/" class="post-card">
       <article>
         <div class="post-meta">
           <time class="post-date" datetime="2026-02-06">February 6, 2026</time>
-          <span class="post-tag">Announcement</span>
+          <span class="post-tag">Update</span>
         </div>
         <h3>Logo announcement. Meet Grad</h3>
         <p>In math, grad (∇) points in the direction of steepest increase. That idea fits AI-Assisted Analytics: move toward the strongest signal. Fast.</p>
