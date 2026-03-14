@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
-  <title>AI-Assisted Analytics for Fast Insights | Friday</title>
+  <title>Unlocking Data Teams with AI-Assisted Analytics - Friday Intellytics</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="AI-Assisted Analytics for teams that need Fast Insights and a better Analytics Experience. Friday turns hard questions into answers in minutes." />
+  <meta name="description"
+    content="We help organizations unlock their data teams with AI-assisted analytics for faster data discovery and insights" />
   <meta name="author" content="Friday Intellytics" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://fridayintellytics.com/" />
@@ -13,11 +15,13 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Friday | Faster answers for data teams" />
-  <meta property="og:description" content="Consulting for data teams that need trustworthy answers in minutes, not another dashboard backlog." />
+  <meta property="og:title" content="Friday Intellytics - Unlock your data team with AI-assisted analytics" />
+  <meta property="og:description"
+    content="We help organizations unlock their data teams with AI-assisted analytics for faster data discovery and insights" />
   <meta property="og:url" content="https://fridayintellytics.com/" />
   <meta property="og:site_name" content="Friday Intellytics" />
   <meta property="og:locale" content="en_US" />
+  #TODO: Update with a new share card
   <meta property="og:image" content="https://fridayintellytics.com/assets/images/friday-share-card.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -25,14 +29,18 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Friday | Faster answers for data teams" />
-  <meta name="twitter:description" content="Consulting for data teams that need trustworthy answers in minutes, not another dashboard backlog." />
+  <meta name="twitter:title" content="Friday Intellytics - Unlock your data team with AI-assisted analytics" />
+  <meta name="twitter:description"
+    content="We help organizations unlock their data teams with AI-assisted analytics for faster data discovery and insights" />
+  #TODO: Update with a new share card
   <meta name="twitter:image" content="https://fridayintellytics.com/assets/images/friday-share-card.png" />
   <meta name="twitter:image:alt" content="Friday Intellytics social share card" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
       --orange: #e8680c;
@@ -47,8 +55,19 @@
       --font-body: 'Inter', system-ui, -apple-system, sans-serif;
       --font-display: 'Playfair Display', Georgia, serif;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: var(--font-body);
       background: var(--bg);
@@ -59,7 +78,10 @@
 
     /* â”€â”€ NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .nav {
-      position: fixed; top: 0; left: 0; right: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       padding: 0 clamp(1.5rem, 5vw, 4rem);
       height: 72px;
@@ -71,6 +93,7 @@
       -webkit-backdrop-filter: blur(16px) saturate(180%);
       border-bottom: 1px solid var(--border-light);
     }
+
     .nav-brand {
       display: flex;
       align-items: center;
@@ -78,23 +101,28 @@
       text-decoration: none;
       color: var(--text);
     }
+
     .nav-logo {
-      width: 28px; height: 28px;
+      width: 28px;
+      height: 28px;
       flex-shrink: 0;
       object-fit: contain;
     }
+
     .nav-name {
       font-weight: 700;
       font-size: 1.05rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
+
     .nav-links {
       display: flex;
       align-items: center;
       gap: 2rem;
       list-style: none;
     }
+
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
@@ -103,7 +131,11 @@
       letter-spacing: 0.01em;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--text); }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
     .nav-cta {
       padding: 0.5rem 1.25rem;
       background: var(--orange);
@@ -112,13 +144,17 @@
       font-weight: 600 !important;
       transition: background 0.2s, transform 0.15s !important;
     }
+
     .nav-cta:hover {
       background: var(--orange-hover) !important;
       color: #fff !important;
       transform: translateY(-1px);
     }
+
     @media (max-width: 640px) {
-      .nav-links .hide-mobile { display: none; }
+      .nav-links .hide-mobile {
+        display: none;
+      }
     }
 
     /* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -129,10 +165,12 @@
       justify-content: center;
       padding: 120px clamp(1.5rem, 5vw, 4rem) 80px;
     }
+
     .hero-inner {
       max-width: 820px;
       text-align: center;
     }
+
     .hero h1 {
       font-family: var(--font-display);
       font-weight: 700;
@@ -142,9 +180,11 @@
       margin-bottom: 1.5rem;
       color: var(--text);
     }
+
     .hero h1 .highlight {
       color: var(--orange);
     }
+
     .hero-tagline {
       font-size: clamp(1.05rem, 2.2vw, 1.3rem);
       color: var(--text-muted);
@@ -152,6 +192,13 @@
       margin: 0 auto 2.5rem;
       line-height: 1.65;
     }
+
+    @media (min-width: 1024px) {
+      .hero-tagline {
+        max-width: 680px;
+      }
+    }
+
     .hero-actions {
       display: flex;
       align-items: center;
@@ -159,6 +206,7 @@
       gap: 1rem;
       flex-wrap: wrap;
     }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -173,43 +221,59 @@
       transition: all 0.2s ease;
       border: none;
     }
+
     .btn-primary {
       background: var(--orange);
       color: #fff;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
+
     .btn-primary:hover {
       background: var(--orange-hover);
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(232,104,12,0.25);
+      box-shadow: 0 4px 12px rgba(232, 104, 12, 0.25);
     }
-    .btn-primary:active { transform: translateY(0); }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
     .btn-secondary {
       background: transparent;
       color: var(--text);
       border: 1px solid var(--border);
     }
+
     .btn-secondary:hover {
       border-color: #ccc;
       background: var(--bg-card);
       transform: translateY(-1px);
     }
-    .btn-secondary:active { transform: translateY(0); }
+
+    .btn-secondary:active {
+      transform: translateY(0);
+    }
+
     .btn-arrow {
       font-size: 1.1rem;
       transition: transform 0.2s;
     }
-    .btn:hover .btn-arrow { transform: translateX(3px); }
+
+    .btn:hover .btn-arrow {
+      transform: translateX(3px);
+    }
 
     /* â”€â”€ WHAT WE DO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .section {
       padding: 100px clamp(1.5rem, 5vw, 4rem);
     }
+
     .section-header {
       text-align: center;
       max-width: 620px;
       margin: 0 auto 3.5rem;
     }
+
     .section-label {
       font-size: 0.8rem;
       font-weight: 600;
@@ -218,6 +282,7 @@
       color: var(--orange);
       margin-bottom: 0.75rem;
     }
+
     .section-title {
       font-family: var(--font-display);
       font-size: clamp(1.8rem, 4vw, 2.6rem);
@@ -225,11 +290,17 @@
       line-height: 1.2;
       margin-bottom: 1rem;
     }
+
     .section-desc {
       color: var(--text-muted);
       font-size: 1.05rem;
       line-height: 1.65;
     }
+
+    .highlight {
+      color: var(--orange);
+    }
+
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -237,6 +308,7 @@
       max-width: 1000px;
       margin: 0 auto;
     }
+
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border-light);
@@ -244,55 +316,66 @@
       padding: 2rem;
       transition: border-color 0.25s, transform 0.2s;
     }
+
     .card:hover {
-      border-color: rgba(232,104,12,0.3);
+      border-color: rgba(232, 104, 12, 0.3);
       transform: translateY(-2px);
     }
+
     .card-icon {
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       display: grid;
       place-items: center;
       border-radius: 10px;
       margin-bottom: 1.25rem;
       font-size: 1.2rem;
-      background: rgba(232,104,12,0.07);
-      border: 1px solid rgba(232,104,12,0.12);
+      background: rgba(232, 104, 12, 0.07);
+      border: 1px solid rgba(232, 104, 12, 0.12);
       color: var(--orange);
     }
+
     .card h3 {
       font-size: 1.05rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
     }
+
     .card p {
       color: var(--text-muted);
       font-size: 0.92rem;
       line-height: 1.6;
     }
+
     .card p a {
       color: var(--orange);
       text-decoration: none;
-      border-bottom: 1px solid rgba(232,104,12,0.22);
+      border-bottom: 1px solid rgba(232, 104, 12, 0.22);
       transition: color 0.2s ease, border-color 0.2s ease;
     }
+
     .card p a:hover {
       color: var(--orange-hover);
-      border-bottom-color: rgba(212,94,10,0.38);
+      border-bottom-color: rgba(212, 94, 10, 0.38);
     }
 
     /* â”€â”€ BLOG SERIES CALLOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .callout {
       max-width: 800px;
       margin: 0 auto;
-      background: rgba(232,104,12,0.04);
-      border: 1px solid rgba(232,104,12,0.12);
+      background: rgba(232, 104, 12, 0.04);
+      border: 1px solid rgba(232, 104, 12, 0.12);
       border-radius: 16px;
       padding: 3rem clamp(2rem, 5vw, 3.5rem);
       display: flex;
       align-items: center;
       gap: 2.5rem;
     }
-    .callout-text { flex: 1; }
+
+    .callout-text {
+      flex: 1;
+    }
+
     .callout-label {
       font-size: 0.78rem;
       font-weight: 600;
@@ -301,6 +384,7 @@
       color: var(--yellow);
       margin-bottom: 0.5rem;
     }
+
     .callout-title {
       font-family: var(--font-display);
       font-size: clamp(1.4rem, 3vw, 1.8rem);
@@ -308,14 +392,20 @@
       margin-bottom: 0.75rem;
       line-height: 1.25;
     }
+
     .callout-desc {
       color: var(--text-muted);
       font-size: 0.95rem;
       line-height: 1.6;
       margin-bottom: 1.5rem;
     }
+
     @media (max-width: 640px) {
-      .callout { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .callout {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
     }
 
     /* â”€â”€ FOOTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -328,6 +418,7 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
+
     .footer-brand {
       display: flex;
       align-items: center;
@@ -338,11 +429,18 @@
       text-transform: uppercase;
       color: var(--text-muted);
     }
-    .footer-brand img { width: 20px; height: 20px; object-fit: contain; }
+
+    .footer-brand img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
     .footer-nav {
       display: flex;
       gap: 1.5rem;
     }
+
     .footer-nav a {
       color: var(--text-muted);
       text-decoration: none;
@@ -350,7 +448,11 @@
       font-weight: 500;
       transition: color 0.2s;
     }
-    .footer-nav a:hover { color: var(--text); }
+
+    .footer-nav a:hover {
+      color: var(--text);
+    }
+
     .footer-copy {
       font-size: 0.82rem;
       color: var(--text-muted);
@@ -366,7 +468,10 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
       }
@@ -378,23 +483,25 @@
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Friday Intellytics",
-    "description": "Friday helps data teams move from question to trusted answer in minutes.",
+    "description": "We help organizations unlock their data teams with AI-assisted analytics for faster data discovery and insights",
     "url": "https://fridayintellytics.com/",
     "logo": "https://fridayintellytics.com/assets/images/friday_logo.png",
     "image": "https://fridayintellytics.com/assets/images/friday-share-card.png",
-    "serviceType": "Analytics consulting",
+    "serviceType": "AI-Assisted Analytics Consulting",
     "areaServed": "Worldwide",
-    "keywords": ["AI-Assisted Analytics", "Analytics Experience", "Fast Insights"]
+    "keywords": ["AI-Assisted Analytics", "Unlocking Data Teams", "Analytics Experience", "Fast Insights"]
   }
   </script>
 </head>
+
 <body>
 
   <!-- â”€â”€ NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <header>
     <nav class="nav" aria-label="Main navigation">
       <a href="/" class="nav-brand" aria-label="Friday Intellytics â€” Home">
-        <img class="nav-logo" src="assets/images/friday_logo.png" alt="Friday Intellytics logo" width="28" height="28" />
+        <img class="nav-logo" src="assets/images/friday_logo.png" alt="Friday Intellytics logo" width="28"
+          height="28" />
         <span class="nav-name">Friday Intellytics</span>
       </a>
       <ul class="nav-links">
@@ -407,65 +514,74 @@
 
   <main>
 
-  <!-- â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section class="hero" aria-label="Hero">
-    <div class="hero-inner">
-      <h1><span class="highlight">AI-Assisted Analytics</span> for Fast Insights</h1>
-      <p class="hero-tagline">We help data teams deliver <strong>Fast Insights</strong> with <strong>AI-Assisted Analytics</strong> and build an <strong>Analytics Experience</strong> people actually want to use.</p>
-      <div class="hero-actions">
-        <a href="mailto:hello@fridayintellytics.com" class="btn btn-primary">
-          Talk to Us <span class="btn-arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="#perspectives" class="btn btn-secondary">
-          Read More &middot; Future of Analytics
-        </a>
+    <!-- â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-inner">
+        <h1>Ask <span class="highlight">more</span> of your data</h1>
+        <p class="hero-tagline">We help organizations unlock their data teams with AI-assisted analytics for faster data discovery and insights</p>
+        <div class="hero-actions">
+          <a href="mailto:hello@fridayintellytics.com" class="btn btn-primary">
+            Talk to Us <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a href="#perspectives" class="btn btn-secondary">
+            Read More &middot; <span class="highlight">Future of Analytics</span>
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="divider"></div>
+    <div class="divider"></div>
 
-  <!-- â”€â”€ SERVICES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section class="section" id="what-we-do" aria-label="What We Do">
-    <div class="section-header">
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">An Analytics Experience built for answers, not slow reports</h2>
-      <p class="section-desc">Friday embeds with your team so <strong>AI-Assisted Analytics</strong> workflows turn open questions into trusted answers without losing human judgment.</p>
-    </div>
-    <div class="cards">
-      <div class="card">
-        <div class="card-icon" aria-hidden="true">&#9670;</div>
-        <h3>Workflow strategy</h3>
-        <p>We assess your data stack and identify where augmented analytics workflows will create the highest-leverage changes to your team.</p>
+    <!-- â”€â”€ SERVICES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <section class="section" id="what-we-do" aria-label="What We Do">
+      <div class="section-header">
+        <div class="section-label">What We Do</div>
+        
+        <h2 class="section-title">Analytics <span class="highlight">Unlocked</span></h2>
+
+        <p class="section-desc">A.I. has the power to unlock your data team. 
+          We build custom A.I. solutions that remove the biggest bottleneck of the Analytics lifecycle.
       </div>
-      <div class="card">
-        <div class="card-icon" aria-hidden="true">&#9651;</div>
-        <h3>Answer questions in minutes</h3>
-        <p>Build AI-powered workflows that produce <strong>Fast Insights</strong> that are validated, contextual, and ready to act on, with <a href="https://www.fridaybot.ai" target="_blank" rel="noopener">Fridaybot</a> woven into the question-to-answer flow.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">&#9670;</div>
+          <h3>Agentic data discovery</h3>
+          <p>Agent-managed, zero manual maintenance discovery that replaces brittle data dictionaries and keeps tables, fields,
+            and definitions in context for every question.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">&#9660;</div>
+          <h3>Analytics Experience</h3>
+          <p>Supercharge the Analytics Experience for the data practitioner to go from
+            raw data and vague hypotheses to crisp, shareable insights in minutes without writing a single line of code.
+            AI-assisted analytics workspace do the heavy lifting.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">&#11044;</div>
+          <h3>Activated team knowledge</h3>
+          <p>Self learning with shared knowledge across team makes every new question faster to answer
+             and better grounded in prior insight instead of starting from a blank state</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-icon" aria-hidden="true">&#9711;</div>
-        <h3>Team enablement</h3>
-        <p>Upskill analysts and engineers to own the new <strong>Analytics Experience</strong> so better answers keep compounding after we leave.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="divider"></div>
+    <div class="divider"></div>
 
-  <!-- â”€â”€ BLOG SERIES CALLOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section class="section" id="perspectives" aria-label="Perspectives">
-    <div class="callout">
-      <div class="callout-text">
-        <div class="callout-label">Blog Series</div>
-        <h2 class="callout-title">The Future of Analytics</h2>
-        <p class="callout-desc">A deep dive into how <strong>AI-Assisted Analytics</strong> reshapes the <strong>Analytics Experience</strong> and why <strong>Fast Insights</strong> should still come with context.</p>
+    <!-- â”€â”€ BLOG SERIES CALLOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <section class="section" id="perspectives" aria-label="Perspectives">
+      <div class="callout">
+        <div class="callout-text">
+          <div class="callout-label">Blog Series</div>
+          <h2 class="callout-title">The Future of Analytics</h2>
+          <p class="callout-desc">A.I. is innovating too fast to keep up. 
+            Stay ahead with the latest breakthroughs where A.I. innovation meets Analytics.
+          </p>
+        </div>
         <a href="blog/" class="btn btn-primary">
           Read the Series <span class="btn-arrow" aria-hidden="true">&rarr;</span>
         </a>
       </div>
-    </div>
-  </section>
+    </section>
 
   </main>
 
@@ -484,4 +600,5 @@
   </footer>
 
 </body>
+
 </html>
