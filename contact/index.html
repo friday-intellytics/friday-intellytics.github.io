@@ -413,8 +413,8 @@
         <h1>Contact <span class="highlight">Us</span></h1>
         <p class="hero-tagline">Have a question about AI-assisted analytics or want to unlock your data team? Send us a message and we’ll get back to you.</p>
 
-        <!-- Replace YOUR_FORM_ID with your form ID from https://formspree.io (free; submissions go to your email) -->
-        <form id="contact-form" class="contact-form-wrap" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <!-- Form posts to Apps Script Web App (deployed via clasp). -->
+        <form id="contact-form" class="contact-form-wrap" action="https://script.google.com/macros/s/AKfycbzA98iiFhTW8jX8Qw6WZ82NpKQpEPK7L9Km5GmloLfu3qgbasG_XUqupYnXst2dZFbwNQ/exec" method="POST">
           <div class="form-row">
             <label for="name">Name <span class="required" aria-hidden="true">*</span></label>
             <input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name" />
@@ -453,31 +453,40 @@
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        var action = form.action;
+        if (action.indexOf('APPS_SCRIPT_WEB_APP_DEPLOYMENT_ID') !== -1) {
+          msg.className = 'form-message error';
+          msg.textContent = 'Form backend not configured. Run clasp deploy and set the Web App URL in contact/index.html.';
+          msg.style.display = 'block';
+          return;
+        }
         btn.disabled = true;
         btn.textContent = 'Sending…';
         msg.className = 'form-message';
         msg.textContent = '';
         msg.style.display = 'none';
 
-        var body = new FormData(form);
-        fetch(form.action, {
+        var formData = new FormData(form);
+        var body = new URLSearchParams(formData).toString();
+        fetch(action, {
           method: 'POST',
           body: body,
-          headers: { Accept: 'application/json' }
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' }
         })
-          .then(function (r) {
-            if (r.ok) {
+          .then(function (r) { return r.json().then(function (data) { return { ok: r.ok, data: data }; }); })
+          .then(function (res) {
+            if (res.ok && res.data && res.data.success) {
               msg.className = 'form-message success';
               msg.textContent = 'Thanks! Your message has been sent. We’ll get back to you soon.';
               msg.style.display = 'block';
               form.reset();
             } else {
-              throw new Error('Submit failed');
+              throw new Error(res.data && res.data.error ? res.data.error : 'Submit failed');
             }
           })
-          .catch(function () {
+          .catch(function (err) {
             msg.className = 'form-message error';
-            msg.textContent = 'Something went wrong. Please email us at hello@fridayintellytics.com.';
+            msg.textContent = err.message || 'Something went wrong. Please email us at hello@fridayintellytics.com.';
             msg.style.display = 'block';
           })
           .finally(function () {
