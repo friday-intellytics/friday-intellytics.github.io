@@ -33,9 +33,6 @@
   <meta name="twitter:image" content="https://fridayintellytics.com/assets/images/friday-share-card.png" />
   <meta name="twitter:image:alt" content="Friday Intellytics social share card" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --orange: #e8680c;
@@ -44,8 +41,8 @@
       --border-light: #f0efed;
       --text: #1a1a1a;
       --text-muted: #636360;
-      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-display: Georgia, "Times New Roman", serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -111,6 +108,19 @@
     .article-body blockquote {
       border-left: 3px solid var(--orange); padding: 0.25rem 0 0.25rem 1.25rem;
       margin: 2rem 0; font-style: italic; color: var(--text-muted);
+    }
+    .related-reading {
+      margin-top: 2.25rem; padding-top: 1.25rem;
+      border-top: 1px solid var(--border-light);
+      color: var(--text-muted); font-size: 0.95rem;
+    }
+    .related-reading a {
+      color: var(--orange); text-decoration: none;
+      border-bottom: 1px solid rgba(232,104,12,0.22);
+    }
+    .related-reading a:hover {
+      color: var(--orange-hover);
+      border-bottom-color: rgba(212,94,10,0.38);
     }
     .article-back {
       display: inline-flex; align-items: center; gap: 0.4rem;
@@ -206,6 +216,8 @@
         <p>This is not self-serve. It is fast answers delivered by people who understand the data, powered by tools that make them faster.</p>
 
         <p>The myth of self-serve set the industry back. <strong>AI-Assisted Analytics</strong> gives teams a better <strong>Analytics Experience</strong>: analysts stay in the loop, business users get <strong>Fast Insights</strong>, and the bottleneck finally starts to move.</p>
+
+        <p class="related-reading"><strong>Related reading:</strong> <a href="../thesis-ai-assists/">AI Should Assist, Not Replace</a>, <a href="../thesis-data-vs-decision-context/">Data Context vs Decision Context</a>, and <a href="../future-of-analytics-part-1/">Analytics Experience in the AI Era</a>.</p>
 
         <a href="../" class="article-back">&larr; Back to Perspectives</a>
       </div>
