@@ -1,4 +1,6 @@
 
+
+
 fix content
 - logo announcement
 - thesis
@@ -6,8 +8,7 @@ fix content
 - - 2
 - - 3
 - - 4
-- future of analytics
-- - 1
+
 
 redo og preview card
 talk to us, cta
@@ -23,3 +24,7 @@ shoot
 
 code fixes
 - styling modularize rather than having repeated code in every site
+
+### DONE
+- future of analytics
+- - 1

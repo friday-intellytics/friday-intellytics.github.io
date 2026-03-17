@@ -236,18 +236,11 @@
       scroll-snap-align: start;
       display: flex;
       flex-direction: column;
-      text-decoration: none;
       color: var(--text);
       background: var(--bg-card);
       border: 1px solid var(--border-light);
       border-radius: 12px;
       padding: 1.5rem;
-      transition: border-color 0.25s, transform 0.2s;
-    }
-
-    .thesis-card:hover {
-      border-color: rgba(232, 104, 12, 0.3);
-      transform: translateY(-2px);
     }
 
     .thesis-card .post-meta {
@@ -922,10 +915,8 @@
     .post-card {
       min-height: 100%;
       padding: 1.35rem;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .thesis-card:hover,
     .series-card:hover,
     .post-card:hover {
       transform: translateY(-3px);
@@ -1097,38 +1088,6 @@
     "hasPart": [
       {
         "@type": "BlogPosting",
-        "headline": "Self-Serve Analytics is a Myth",
-        "description": "Self-serve analytics shifted the burden from data teams to business users but never removed the bottleneck.",
-        "datePublished": "2026-03-13",
-        "author": { "@type": "Organization", "name": "Friday Intellytics" },
-        "url": "https://fridayintellytics.com/blog/thesis-self-serve-myth/"
-      },
-      {
-        "@type": "BlogPosting",
-        "headline": "AI Should Assist Data Professionals, Not Replace Them",
-        "description": "AI-assisted analytics keeps the data professional in the loop. The analyst provides judgment and AI provides speed.",
-        "datePublished": "2026-03-13",
-        "author": { "@type": "Organization", "name": "Friday Intellytics" },
-        "url": "https://fridayintellytics.com/blog/thesis-ai-assists/"
-      },
-      {
-        "@type": "BlogPosting",
-        "headline": "Data Context is Not Decision Context",
-        "description": "The numbers are right but the insight is wrong. Bridging that gap is the real job of analytics.",
-        "datePublished": "2026-03-13",
-        "author": { "@type": "Organization", "name": "Friday Intellytics" },
-        "url": "https://fridayintellytics.com/blog/thesis-data-vs-decision-context/"
-      },
-      {
-        "@type": "BlogPosting",
-        "headline": "The Analytics Experience is Dead",
-        "description": "Dashboards and reports haven't changed in 20 years. The analytics experience needs to be rebuilt for an AI-native world.",
-        "datePublished": "2026-03-13",
-        "author": { "@type": "Organization", "name": "Friday Intellytics" },
-        "url": "https://fridayintellytics.com/blog/thesis-analytics-experience/"
-      },
-      {
-        "@type": "BlogPosting",
         "headline": "Analytics â€” an Empirical View",
         "description": "Analytics never got its DevEx moment. To understand why, it helps to look at what actually happened across three eras of analytics.",
         "datePublished": "2026-03-13",
@@ -1274,7 +1233,7 @@
         <div class="section-top-copy">
           <div class="section-eyebrow">Friday Thesis</div>
           <h2 class="section-title">Our emerging belief system</h2>
-          <p class="section-desc">Subject to change. Four short thesis we find today that frame the consulting work and
+          <p class="section-desc">Subject to evolve. Four short thesis we find today that frame our work and
             the way we think modern data teams should operate.</p>
         </div>
       </div>
@@ -1282,54 +1241,47 @@
       <div class="thesis-wrapper">
         <section class="thesis-track" aria-label="Our thesis">
 
-          <a href="thesis-self-serve-myth/" class="thesis-card">
-            <article>
-              <div class="post-meta">
-                <span class="post-tag">Thesis 1</span>
-              </div>
-              <h3>Self-Serve Analytics is a Myth</h3>
-              <p>Every new technology right from Excel to no code BI tools made the same promise. But never delivered.
-                It rather added to the bottleneck in Analytics workflow. Same is happening with A.I.</p>
-              <!-- <span class="post-read-more">Read thesis 1 <span class="post-arrow" aria-hidden="true">&rarr;</span></span> -->
-            </article>
-          </a>
+          <article class="thesis-card">
+            <div class="post-meta">
+              <span class="post-tag">Thesis 1</span>
+            </div>
+            <h3>Self-Serve Analytics is a Myth</h3>
+            <p>Every new technology right from Excel to no code BI tools made the same promise. But never delivered.
+              It rather added to the bottleneck in Analytics workflow. Same is happening with A.I.
+              Trust me no exec is going to build their own dashboard</p>
+          </article>
 
-          <a href="thesis-ai-assists/" class="thesis-card">
-            <article>
-              <div class="post-meta">
-                <span class="post-tag">Thesis 2</span>
-              </div>
-              <h3>AI Should Assist, Not Replace</h3>
-              <p>The right system removes grunt work but keeps the judgment with the data practitioner.
-                Same with A.I. systems which are capable of removing even more of the grunt work.</p>
-              <!-- <span class="post-read-more">Read thesis 2 <span class="post-arrow" aria-hidden="true">&rarr;</span></span> -->
-            </article>
-          </a>
+          <article class="thesis-card">
+            <div class="post-meta">
+              <span class="post-tag">Thesis 2</span>
+            </div>
+            <h3>AI Should Assist, Not Replace</h3>
+            <p>The right system removes grunt work but keeps the judgment with the data practitioner.
+              Same with A.I. systems which are capable of removing even more of the grunt work.</p>
+          </article>
 
-          <a href="thesis-data-vs-decision-context/" class="thesis-card">
-            <article>
-              <div class="post-meta">
-                <span class="post-tag">Thesis 3</span>
-              </div>
-              <h3>Data Context. Not Decision Context</h3>
-              <p>A correct number is not the same thing as a useful recommendation. Analytics exists to bridge that gap.
-              </p>
-              <!-- <span class="post-read-more">Read thesis 3 <span class="post-arrow" aria-hidden="true">&rarr;</span></span> -->
-            </article>
-          </a>
+          <article class="thesis-card">
+            <div class="post-meta">
+              <span class="post-tag">Thesis 3</span>
+            </div>
+            <h3>Data Context. Not Decision Context</h3>
+            <p>A correct number is not the same thing as a useful recommendation. Modern data teams should know the
+              difference.
+              Analytics exists to bridge that gap. And the context required for generating that insight is very
+              different
+              than the context required for generating a correct answers.
+            </p>
+          </article>
 
-          <a href="thesis-analytics-experience/" class="thesis-card">
-            <article>
-              <div class="post-meta">
-                <span class="post-tag">Thesis 4</span>
-              </div>
-              <h3>The Analytics Experience Needs a Rebuild</h3>
-              <p>Jupyter notebooks is the last best thing that ever happened to Analytics Experience Everything else is
-                borrowed from software development.
-                Analytics need more that a TUI. It needs a dedicated workspace supercharged with A.I.</p>
-              <!-- <span class="post-read-more">Read thesis 4 <span class="post-arrow" aria-hidden="true">&rarr;</span></span> -->
-            </article>
-          </a>
+          <article class="thesis-card">
+            <div class="post-meta">
+              <span class="post-tag">Thesis 4</span>
+            </div>
+            <h3>The Analytics Experience Needs a Rebuild</h3>
+            <p>Jupyter notebooks is the last best thing that ever happened to Analytics Experience. Everything else is
+              borrowed from software development. Analytics need more that a TUI.
+              It needs a dedicated workspace supercharged with A.I. And an intelligent assistant that remembers.</p>
+          </article>
 
         </section>
       </div>
