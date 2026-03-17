@@ -1056,6 +1056,69 @@
       }
     }
 
+    /* ── MOBILE CARD FIXES ────────────────────────────────────── */
+    @media (max-width: 640px) {
+      /* Reduce section-shell padding so cards aren't squeezed */
+      .section-shell {
+        padding: 1rem;
+        border-radius: 18px;
+        margin-top: 1rem;
+      }
+
+      /* Stack update cards vertically — side-by-side is too narrow on mobile */
+      #updates .post-list {
+        flex-direction: column;
+        overflow-x: visible;
+        scroll-snap-type: none;
+        padding: 0;
+        gap: 0.75rem;
+      }
+
+      #updates .post-list .post-card {
+        flex: 1 1 auto;
+        min-width: 0;
+        scroll-snap-align: none;
+      }
+
+      /* Give updates section more breathing room between header + cards */
+      #updates {
+        gap: 0.75rem;
+      }
+
+      /* Add scroll-snap to the manifesto grid on mobile */
+      .manifesto-grid {
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.65rem;
+      }
+
+      .manifesto-item {
+        scroll-snap-align: start;
+      }
+
+      /* Series cards: slightly wider on very small screens for better readability */
+      .series-card,
+      .thesis-card {
+        flex: 0 0 78vw;
+      }
+
+      /* Latest issue feature: more comfortable padding */
+      .latest-issue-feature {
+        padding: 1.35rem;
+      }
+
+      /* Section title sizes: scale down a touch on mobile */
+      .section-title {
+        font-size: clamp(1.35rem, 5.5vw, 1.7rem);
+      }
+
+      /* Hero feature title */
+      .hero-feature h2,
+      .latest-issue-feature h2 {
+        font-size: clamp(1.55rem, 6vw, 2rem);
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
 
       *,
