@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <title>Perspectives - Friday Intellytics</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Read Friday perspectives on AI-Assisted Analytics, Fast Insights, and the Analytics Experience for modern data teams building with AI." />
+  <meta name="description"
+    content="Read Friday perspectives on AI-Assisted Analytics, Fast Insights, and the Analytics Experience for modern data teams building with AI." />
   <meta name="author" content="Friday Intellytics" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://fridayintellytics.com/blog/" />
@@ -14,7 +16,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Perspectives - Friday Intellytics" />
-  <meta property="og:description" content="Perspectives on unlocking data teams with AI-assisted analytics. Essays and insights for faster data discovery and how modern data teams work in the AI era." />
+  <meta property="og:description"
+    content="Perspectives on unlocking data teams with AI-assisted analytics. Essays and insights for faster data discovery and how modern data teams work in the AI era." />
   <meta property="og:url" content="https://fridayintellytics.com/blog/" />
   <meta property="og:site_name" content="Friday Intellytics" />
   <meta property="og:locale" content="en_US" />
@@ -26,13 +29,16 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Perspectives - Friday Intellytics" />
-  <meta name="twitter:description" content="Perspectives on unlocking data teams with AI-assisted analytics. Essays and insights for faster data discovery and how modern data teams work in the AI era." />
+  <meta name="twitter:description"
+    content="Perspectives on unlocking data teams with AI-assisted analytics. Essays and insights for faster data discovery and how modern data teams work in the AI era." />
   <meta name="twitter:image" content="https://fridayintellytics.com/assets/images/friday-share-card.png" />
   <meta name="twitter:image:alt" content="Friday Intellytics social share card" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet" />
 
   <style>
     :root {
@@ -48,8 +54,19 @@
       --font-body: 'Inter', system-ui, -apple-system, sans-serif;
       --font-display: 'Playfair Display', Georgia, serif;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: var(--font-body);
       background: var(--bg);
@@ -61,7 +78,10 @@
 
     /* â”€â”€ NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .nav {
-      position: fixed; top: 0; left: 0; right: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       padding: 0 clamp(1.5rem, 5vw, 4rem);
       height: 72px;
@@ -73,6 +93,7 @@
       -webkit-backdrop-filter: blur(16px) saturate(180%);
       border-bottom: 1px solid var(--border-light);
     }
+
     .nav-brand {
       display: flex;
       align-items: center;
@@ -80,23 +101,28 @@
       text-decoration: none;
       color: var(--text);
     }
+
     .nav-logo {
-      width: 28px; height: 28px;
+      width: 28px;
+      height: 28px;
       flex-shrink: 0;
       object-fit: contain;
     }
+
     .nav-name {
       font-weight: 700;
       font-size: 1.05rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
+
     .nav-links {
       display: flex;
       align-items: center;
       gap: 2rem;
       list-style: none;
     }
+
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
@@ -105,8 +131,15 @@
       letter-spacing: 0.01em;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a.active { color: var(--text); }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a.active {
+      color: var(--text);
+    }
+
     .nav-cta {
       padding: 0.5rem 1.25rem;
       background: var(--orange);
@@ -115,13 +148,17 @@
       font-weight: 600 !important;
       transition: background 0.2s, transform 0.15s !important;
     }
+
     .nav-cta:hover {
       background: var(--orange-hover) !important;
       color: #fff !important;
       transform: translateY(-1px);
     }
+
     @media (max-width: 640px) {
-      .nav-links .hide-mobile { display: none; }
+      .nav-links .hide-mobile {
+        display: none;
+      }
     }
 
     /* â”€â”€ PAGE HEADER / THESIS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -131,6 +168,7 @@
       margin: 0 auto;
       text-align: center;
     }
+
     .page-header h1 {
       font-family: var(--font-display);
       font-weight: 700;
@@ -139,16 +177,19 @@
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
     }
+
     .page-header h1 .highlight {
       color: var(--orange);
     }
-    .page-header > p {
+
+    .page-header>p {
       font-size: clamp(1rem, 2vw, 1.15rem);
       color: var(--text-muted);
       max-width: 580px;
       margin: 0 auto;
       line-height: 1.65;
     }
+
     .section-heading {
       max-width: 800px;
       margin: 0 auto 0.6rem;
@@ -158,12 +199,14 @@
       font-weight: 600;
       line-height: 1.2;
     }
+
     .thesis-wrapper {
       --content-inset: max(clamp(1.5rem, 5vw, 4rem), calc((100vw - 800px) / 2 + clamp(1.5rem, 5vw, 4rem)));
       margin: 0 0 0 0;
       padding: 0;
       overflow: visible;
     }
+
     .thesis-track {
       display: flex;
       gap: 1rem;
@@ -174,9 +217,20 @@
       scrollbar-width: thin;
       scrollbar-color: var(--border) transparent;
     }
-    .thesis-track::-webkit-scrollbar { height: 5px; }
-    .thesis-track::-webkit-scrollbar-track { background: transparent; }
-    .thesis-track::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    .thesis-track::-webkit-scrollbar {
+      height: 5px;
+    }
+
+    .thesis-track::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .thesis-track::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+
     .thesis-card {
       flex: 0 0 260px;
       scroll-snap-align: start;
@@ -190,16 +244,19 @@
       padding: 1.5rem;
       transition: border-color 0.25s, transform 0.2s;
     }
+
     .thesis-card:hover {
-      border-color: rgba(232,104,12,0.3);
+      border-color: rgba(232, 104, 12, 0.3);
       transform: translateY(-2px);
     }
+
     .thesis-card .post-meta {
       display: flex;
       align-items: center;
       gap: 0.75rem;
       margin-bottom: 0.6rem;
     }
+
     .thesis-card h2 {
       font-family: var(--font-display);
       font-size: 1.05rem;
@@ -207,14 +264,18 @@
       line-height: 1.3;
       margin-bottom: 0.5rem;
     }
+
     .thesis-card p {
       color: var(--text-muted);
       font-size: 0.84rem;
       line-height: 1.55;
       flex: 1;
     }
+
     @media (max-width: 640px) {
-      .thesis-card { flex: 0 0 240px; }
+      .thesis-card {
+        flex: 0 0 240px;
+      }
     }
 
     /* â”€â”€ SECTION LABEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -230,10 +291,12 @@
       margin-left: auto;
       margin-right: auto;
     }
+
     .section-label .part-count {
       color: var(--text-muted);
       font-weight: 500;
     }
+
     .section-label-row {
       max-width: 800px;
       margin: 0 auto 1.25rem;
@@ -243,10 +306,12 @@
       justify-content: space-between;
       gap: 1rem;
     }
+
     .section-label-row .section-label {
       margin: 0;
       padding: 0;
     }
+
     .subscribe-btn {
       display: inline-flex;
       align-items: center;
@@ -266,10 +331,12 @@
       transition: background 0.2s, transform 0.15s;
       flex-shrink: 0;
     }
+
     .subscribe-btn:hover {
       background: var(--orange-hover);
       transform: translateY(-1px);
     }
+
     .section-desc {
       max-width: 800px;
       margin: -0.5rem auto 1.5rem;
@@ -286,6 +353,7 @@
       margin: 0 auto 2.5rem;
       padding: 0 clamp(1.5rem, 5vw, 4rem);
     }
+
     .divider hr {
       border: none;
       height: 1px;
@@ -299,6 +367,7 @@
       padding: 0;
       overflow: visible;
     }
+
     .series-track {
       display: flex;
       gap: 1rem;
@@ -309,9 +378,20 @@
       scrollbar-width: thin;
       scrollbar-color: var(--border) transparent;
     }
-    .series-track::-webkit-scrollbar { height: 5px; }
-    .series-track::-webkit-scrollbar-track { background: transparent; }
-    .series-track::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    .series-track::-webkit-scrollbar {
+      height: 5px;
+    }
+
+    .series-track::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .series-track::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+
     .series-card {
       flex: 0 0 260px;
       scroll-snap-align: start;
@@ -325,25 +405,30 @@
       padding: 1.5rem;
       transition: border-color 0.25s, transform 0.2s;
     }
+
     .series-card:hover {
-      border-color: rgba(232,104,12,0.3);
+      border-color: rgba(232, 104, 12, 0.3);
       transform: translateY(-2px);
     }
+
     .series-card--placeholder {
       opacity: 0.5;
       cursor: default;
       border-style: dashed;
     }
+
     .series-card--placeholder:hover {
       border-color: var(--border-light);
       transform: none;
     }
+
     .series-card .post-meta {
       display: flex;
       align-items: center;
       gap: 0.75rem;
       margin-bottom: 0.6rem;
     }
+
     .series-card h2 {
       font-family: var(--font-display);
       font-size: 1.05rem;
@@ -351,14 +436,18 @@
       line-height: 1.3;
       margin-bottom: 0.5rem;
     }
+
     .series-card p {
       color: var(--text-muted);
       font-size: 0.84rem;
       line-height: 1.55;
       flex: 1;
     }
+
     @media (max-width: 640px) {
-      .series-card { flex: 0 0 240px; }
+      .series-card {
+        flex: 0 0 240px;
+      }
     }
 
     /* â”€â”€ SHARED POST STYLES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -368,22 +457,25 @@
       gap: 0.75rem;
       margin-bottom: 0.6rem;
     }
+
     .post-date {
       font-size: 0.8rem;
       color: var(--text-muted);
       font-weight: 500;
     }
+
     .post-tag {
       font-size: 0.72rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--orange);
-      background: rgba(232,104,12,0.07);
-      border: 1px solid rgba(232,104,12,0.12);
+      background: rgba(232, 104, 12, 0.07);
+      border: 1px solid rgba(232, 104, 12, 0.12);
       padding: 0.15rem 0.55rem;
       border-radius: 4px;
     }
+
     .post-read-more {
       display: inline-flex;
       align-items: center;
@@ -393,6 +485,7 @@
       font-weight: 600;
       color: var(--orange);
     }
+
     .post-arrow {
       transition: transform 0.2s;
     }
@@ -406,6 +499,7 @@
       flex-direction: column;
       gap: 1.25rem;
     }
+
     .post-card {
       display: block;
       text-decoration: none;
@@ -416,10 +510,12 @@
       padding: 1.75rem 2rem;
       transition: border-color 0.25s, transform 0.2s;
     }
+
     .post-card:hover {
-      border-color: rgba(232,104,12,0.3);
+      border-color: rgba(232, 104, 12, 0.3);
       transform: translateY(-2px);
     }
+
     .post-card h2 {
       font-family: var(--font-display);
       font-size: clamp(1.15rem, 2.5vw, 1.4rem);
@@ -427,11 +523,13 @@
       line-height: 1.3;
       margin-bottom: 0.5rem;
     }
+
     .post-card p {
       color: var(--text-muted);
       font-size: 0.92rem;
       line-height: 1.6;
     }
+
     .post-card:hover .post-read-more .post-arrow,
     .series-card:hover .post-read-more .post-arrow,
     .thesis-card:hover .post-read-more .post-arrow {
@@ -454,14 +552,26 @@
       scrollbar-width: thin;
       scrollbar-color: var(--border) transparent;
     }
-    #updates .post-list::-webkit-scrollbar { height: 6px; }
-    #updates .post-list::-webkit-scrollbar-track { background: transparent; }
-    #updates .post-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    #updates .post-list::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    #updates .post-list::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #updates .post-list::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+
     #updates .post-list .post-card {
       flex: 1 1 0;
       min-width: 0;
       scroll-snap-align: start;
     }
+
     .footer {
       padding: 3rem clamp(1.5rem, 5vw, 4rem);
       border-top: 1px solid var(--border-light);
@@ -471,6 +581,7 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
+
     .footer-brand {
       display: flex;
       align-items: center;
@@ -481,11 +592,18 @@
       text-transform: uppercase;
       color: var(--text-muted);
     }
-    .footer-brand img { width: 20px; height: 20px; object-fit: contain; }
+
+    .footer-brand img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
     .footer-nav {
       display: flex;
       gap: 1.5rem;
     }
+
     .footer-nav a {
       color: var(--text-muted);
       text-decoration: none;
@@ -493,7 +611,11 @@
       font-weight: 500;
       transition: color 0.2s;
     }
-    .footer-nav a:hover { color: var(--text); }
+
+    .footer-nav a:hover {
+      color: var(--text);
+    }
+
     .footer-copy {
       font-size: 0.82rem;
       color: var(--text-muted);
@@ -501,14 +623,16 @@
 
     body {
       background:
-        radial-gradient(circle at top left, rgba(232,104,12,0.08), transparent 26%),
-        radial-gradient(circle at 86% 18%, rgba(200,147,10,0.08), transparent 22%),
+        radial-gradient(circle at top left, rgba(232, 104, 12, 0.08), transparent 26%),
+        radial-gradient(circle at 86% 18%, rgba(200, 147, 10, 0.08), transparent 22%),
         linear-gradient(180deg, #fcfaf6 0%, #f7f4ef 42%, #fcfbf9 100%);
     }
+
     .nav {
       background: rgba(252, 250, 246, 0.86);
-      border-bottom-color: rgba(23,23,23,0.07);
+      border-bottom-color: rgba(23, 23, 23, 0.07);
     }
+
     main {
       width: min(1180px, calc(100% - 1rem));
       margin: 0 auto;
@@ -517,9 +641,9 @@
 
     .hero-intro,
     .section-shell {
-      border: 1px solid rgba(23,23,23,0.08);
+      border: 1px solid rgba(23, 23, 23, 0.08);
       border-radius: 26px;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255, 255, 255, 0.8);
       box-shadow: 0 18px 45px rgba(28, 22, 15, 0.08);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -536,6 +660,7 @@
       overflow: hidden;
       isolation: isolate;
     }
+
     .hero-intro::before,
     .hero-intro::after {
       content: "";
@@ -543,20 +668,23 @@
       border-radius: 999px;
       z-index: -1;
     }
+
     .hero-intro::before {
       width: 260px;
       height: 260px;
       top: -110px;
       right: -70px;
-      background: rgba(232,104,12,0.08);
+      background: rgba(232, 104, 12, 0.08);
     }
+
     .hero-intro::after {
       width: 220px;
       height: 220px;
       bottom: -110px;
       left: -80px;
-      background: rgba(200,147,10,0.08);
+      background: rgba(200, 147, 10, 0.08);
     }
+
     .page-header h1 {
       margin-bottom: 1rem;
       font-size: clamp(2.9rem, 6vw, 4.9rem);
@@ -564,7 +692,8 @@
       letter-spacing: -0.03em;
       max-width: 10ch;
     }
-    .page-header > p {
+
+    .page-header>p {
       max-width: 58ch;
       margin: 0;
       font-size: 1.03rem;
@@ -581,12 +710,14 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 0.85rem;
       margin-top: 1.6rem;
     }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -598,24 +729,29 @@
       font-weight: 600;
       transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
     }
+
     .btn-primary {
       background: var(--orange);
       color: #fff;
-      box-shadow: 0 10px 20px rgba(232,104,12,0.18);
+      box-shadow: 0 10px 20px rgba(232, 104, 12, 0.18);
     }
+
     .btn-primary:hover {
       background: var(--orange-hover);
       transform: translateY(-1px);
     }
+
     .btn-secondary {
-      border: 1px solid rgba(23,23,23,0.1);
-      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      background: rgba(255, 255, 255, 0.72);
       color: var(--text);
     }
+
     .btn-secondary:hover {
       transform: translateY(-1px);
-      border-color: rgba(232,104,12,0.2);
+      border-color: rgba(232, 104, 12, 0.2);
     }
+
     .hero-feature {
       display: flex;
       flex-direction: column;
@@ -629,6 +765,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .hero-feature::before {
       content: "";
       position: absolute;
@@ -637,8 +774,9 @@
       right: -55px;
       bottom: -55px;
       border-radius: 999px;
-      background: rgba(232,104,12,0.16);
+      background: rgba(232, 104, 12, 0.16);
     }
+
     .hero-feature-meta {
       display: flex;
       align-items: center;
@@ -647,13 +785,15 @@
       margin-bottom: 1rem;
       flex-wrap: wrap;
     }
+
     .hero-feature-label {
-      color: rgba(255,255,255,0.72);
+      color: rgba(255, 255, 255, 0.72);
       font-size: 0.74rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
+
     .hero-feature h2 {
       font-family: var(--font-display);
       font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -662,15 +802,17 @@
       max-width: 11ch;
       margin-bottom: 0.8rem;
     }
+
     .hero-feature p {
       max-width: 33ch;
-      color: rgba(255,255,255,0.76);
+      color: rgba(255, 255, 255, 0.76);
       font-size: 0.96rem;
       line-height: 1.65;
     }
+
     .hero-feature .post-read-more,
     .hero-feature .post-date {
-      color: rgba(255,255,255,0.88);
+      color: rgba(255, 255, 255, 0.88);
     }
 
     .metrics {
@@ -679,18 +821,21 @@
       gap: 1rem;
       margin: 1.2rem 0 1.8rem;
     }
+
     .metric {
       padding: 1rem 1.1rem;
       border-radius: 20px;
-      border: 1px solid rgba(23,23,23,0.08);
-      background: rgba(255,255,255,0.66);
+      border: 1px solid rgba(23, 23, 23, 0.08);
+      background: rgba(255, 255, 255, 0.66);
     }
+
     .metric strong {
       display: block;
       font-family: var(--font-display);
       font-size: 1.85rem;
       line-height: 1;
     }
+
     .metric span {
       display: block;
       margin-top: 0.35rem;
@@ -703,6 +848,7 @@
       padding: clamp(1.35rem, 3vw, 1.8rem);
       margin-top: 1.5rem;
     }
+
     .section-top {
       display: flex;
       align-items: end;
@@ -710,6 +856,7 @@
       gap: 1rem;
       margin-bottom: 1.3rem;
     }
+
     .section-top-copy .section-desc {
       max-width: 58ch;
       margin: 0.55rem 0 0;
@@ -717,6 +864,7 @@
       font-size: 0.96rem;
       line-height: 1.7;
     }
+
     .section-title {
       margin-top: 0.4rem;
       font-family: var(--font-display);
@@ -724,6 +872,7 @@
       line-height: 1.05;
       letter-spacing: -0.02em;
     }
+
     .section-cta {
       flex-shrink: 0;
       color: var(--text);
@@ -732,6 +881,7 @@
       font-weight: 600;
       white-space: nowrap;
     }
+
     .section-cta:hover {
       color: var(--orange);
     }
@@ -742,11 +892,13 @@
     .section-label {
       display: none;
     }
+
     .thesis-wrapper,
     .series-wrapper {
       margin: 0;
       padding: 0;
     }
+
     .thesis-track {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -755,14 +907,16 @@
       scroll-snap-type: none;
       padding: 0;
     }
+
     .thesis-card,
     .series-card,
     .post-card,
     .post-aside {
       border-radius: 22px;
-      border: 1px solid rgba(23,23,23,0.08);
-      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(23, 23, 23, 0.08);
+      background: rgba(255, 255, 255, 0.72);
     }
+
     .thesis-card,
     .series-card,
     .post-card {
@@ -770,13 +924,15 @@
       padding: 1.35rem;
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
+
     .thesis-card:hover,
     .series-card:hover,
     .post-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(232,104,12,0.2);
+      border-color: rgba(232, 104, 12, 0.2);
       box-shadow: 0 18px 32px rgba(28, 22, 15, 0.07);
     }
+
     .thesis-card h3,
     .series-card h3,
     .post-card h3,
@@ -787,6 +943,7 @@
       letter-spacing: -0.02em;
       margin-bottom: 0.55rem;
     }
+
     .thesis-card p,
     .series-card p,
     .post-card p,
@@ -796,6 +953,7 @@
       line-height: 1.65;
       flex: 1;
     }
+
     .series-track {
       display: grid;
       grid-template-columns: minmax(0, 1.12fr) minmax(260px, 0.88fr);
@@ -804,26 +962,31 @@
       scroll-snap-type: none;
       padding: 0;
     }
+
     .series-card:first-child {
       grid-row: span 2;
       padding: 1.7rem;
-      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(247,242,234,0.92)), rgba(255,255,255,0.8);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 242, 234, 0.92)), rgba(255, 255, 255, 0.8);
     }
+
     .series-card:first-child h3 {
       font-size: clamp(1.75rem, 3vw, 2.4rem);
       max-width: 14ch;
     }
+
     .series-card--placeholder {
       opacity: 1;
       cursor: default;
       border-style: dashed;
-      background: rgba(255,255,255,0.56);
+      background: rgba(255, 255, 255, 0.56);
     }
+
     .series-card--placeholder:hover {
       transform: none;
-      border-color: rgba(23,23,23,0.08);
+      border-color: rgba(23, 23, 23, 0.08);
       box-shadow: none;
     }
+
     .post-list {
       display: grid;
       grid-template-columns: minmax(0, 1fr) 280px;
@@ -832,23 +995,28 @@
       margin: 0;
       padding: 0;
     }
+
     .post-card {
       padding: 1.5rem;
     }
+
     .post-aside {
       padding: 1.35rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .post-aside p + p {
+
+    .post-aside p+p {
       margin-top: 0.75rem;
     }
+
     .post-meta {
       margin-bottom: 0.8rem;
       justify-content: space-between;
       flex-wrap: wrap;
     }
+
     .post-tag {
       border-radius: 999px;
       padding: 0.28rem 0.55rem;
@@ -856,21 +1024,25 @@
       font-weight: 700;
       letter-spacing: 0.06em;
     }
+
     .footer {
       margin-top: 2rem;
       padding: 2.2rem clamp(1.5rem, 5vw, 4rem) 0;
     }
 
     @media (max-width: 980px) {
+
       .hero-intro,
       .series-track,
       .post-list {
         grid-template-columns: 1fr;
       }
+
       .section-top {
         flex-direction: column;
         align-items: start;
       }
+
       .series-card:first-child {
         grid-row: auto;
       }
@@ -881,6 +1053,7 @@
         width: min(100% - 1rem, 1180px);
         padding-top: 96px;
       }
+
       .thesis-track,
       .metrics {
         grid-template-columns: 1fr;
@@ -888,7 +1061,10 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
       }
@@ -971,13 +1147,15 @@
   }
   </script>
 </head>
+
 <body>
 
   <!-- â”€â”€ NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <header>
     <nav class="nav" aria-label="Main navigation">
       <a href="../" class="nav-brand" aria-label="Friday Intellytics â€” Home">
-        <img class="nav-logo" src="../assets/images/friday_logo.png" alt="Friday Intellytics logo" width="28" height="28" />
+        <img class="nav-logo" src="../assets/images/friday_logo.png" alt="Friday Intellytics logo" width="28"
+          height="28" />
         <span class="nav-name">Friday Intellytics</span>
       </a>
       <ul class="nav-links">
@@ -990,200 +1168,213 @@
 
   <main>
 
-  <!-- â”€â”€ OUR THESIS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section class="page-header hero-intro" aria-label="Perspectives overview">
-    <div class="hero-copy-block">
-      <div class="section-eyebrow">Newly launched!</div>
-      <h1><span class="highlight">Future</span> of Analytics</h1>
-      <p>
-        A.I. is innovating too fast to keep up. Stay ahead with the latest breakthroughs where A.I. innovation meets Analytics.
-      </p>
-      <div class="hero-actions">
-        <a href="https://fridayanalytics.substack.com/" target="_blank" rel="noopener" class="btn btn-primary">Subscribe to the newsletter &rarr;</a>
-        <a href="../" class="btn btn-secondary">Back to the home page</a>
+    <!-- â”€â”€ OUR THESIS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <section class="page-header hero-intro" aria-label="Perspectives overview">
+      <div class="hero-copy-block">
+        <div class="section-eyebrow">Newly launched!</div>
+        <h1><span class="highlight">Future</span> of Analytics</h1>
+        <p>
+          Stay ahead of the curve: weekly takes on what’s happening at the intersection of AI and Analytics.
+        </p>
+        <div class="hero-actions">
+          <a href="https://fridayanalytics.substack.com/" target="_blank" rel="noopener"
+            class="btn btn-primary">Subscribe to the newsletter &rarr;</a>
+          <a href="../" class="btn btn-secondary">Back to the home page</a>
+        </div>
       </div>
-    </div>
 
-    <a href="future-of-analytics-part-1/" class="hero-feature">
-      <div class="hero-feature-meta">
-        <span class="post-tag">Latest issue</span>
-        <time class="post-date" datetime="2026-03-13">March 13, 2026</time>
+      <a href="future-of-analytics-part-1/" class="hero-feature">
+        <div class="hero-feature-meta">
+          <span class="post-tag">Latest issue</span>
+          <time class="post-date" datetime="2026-03-13">March 13, 2026</time>
+        </div>
+        <div class="hero-feature-label">Future of Analytics - Issue 1</div>
+        <h2>Analytics - An empirical view</h2>
+        <p>A brief racap on the three eras of Analytics and into the future</p>
+        <span class="post-read-more">Read the issue <span class="post-arrow" aria-hidden="true">&rarr;</span></span>
+      </a>
+    </section>
+
+    <section class="metrics" aria-label="Publication summary">
+      <div class="metric">
+        <strong>1</strong>
+        <span>Newsletter series. Future of Analytics.</span>
       </div>
-      <div class="hero-feature-label">Future of Analytics - Issue 1</div>
-      <h2>Analytics - An empirical view</h2>
-      <p>A brief racap on the three eras of Analytics and into the future</p>
-      <span class="post-read-more">Read the issue <span class="post-arrow" aria-hidden="true">&rarr;</span></span>
-    </a>
-  </section>
+      <div class="metric">
+        <strong>2</strong>
+        <span>Updates</span>
+      </div>
+      <div class="metric">
+        <strong>4</strong>
+        <span>Thesis pieces defining our conviction.</span>
+      </div>
+    </section>
 
-  <section class="metrics" aria-label="Publication summary">
-    <div class="metric">
-      <strong>1</strong>
-      <span>Newsletter series. Future of Analytics.</span>
-    </div>
-    <div class="metric">
-      <strong>2</strong>
-      <span>Updates</span>
-    </div>
-    <div class="metric">
-      <strong>4</strong>
-      <span>Thesis pieces defining our conviction.</span>
-    </div>
-  </section>
-
-  <!-- â”€â”€ FUTURE OF ANALYTICS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section class="section-shell" id="newsletter" aria-label="Future of Analytics newsletter">
-  <div class="section-top">
-    <div class="section-top-copy">
-      <div class="section-eyebrow">Future of Analytics</div>
-      <h2 class="section-title">A weekly letter for teams navigating the shift</h2>
-      <p class="section-desc">Stay ahead of the curve: weekly takes on what’s changing at the intersection of AI and Analytics. 
-        A.I. advancements, market movement and industry trends with our take on it.</p>
-    </div>
-    <a href="https://fridayanalytics.substack.com/" target="_blank" rel="noopener" class="section-cta">Open Substack &rarr;</a>
-  </div>
-
-  <div class="series-wrapper">
-  <section class="series-track" aria-label="Future of Analytics newsletter">
-
-    <a href="future-of-analytics-part-1/" class="series-card">
-      <article>
-        <div class="post-meta">
-          <span class="post-tag">Issue 1</span>
-          <time class="post-date" datetime="2026-03-13">Mar 13, 2026</time>
+    <!-- â”€â”€ FUTURE OF ANALYTICS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <section class="section-shell" id="newsletter" aria-label="Future of Analytics newsletter">
+      <div class="section-top">
+        <div class="section-top-copy">
+          <div class="section-eyebrow">WEEKLY NEWSLETTER</div>
+          <h2 class="section-title">Future of Analytics</h2>
+          <p class="section-desc">Stay ahead of the curve: weekly takes on what’s happening at the intersection of AI
+            and
+            Analytics.
+            A.I. advancements, market movement and industry trends with our take on it.</p>
         </div>
-        <h3>Analytics - An Empirical View</h3>
-        <p>This issue maps the SQL era, dashboard era, AI era and maps to where the real opportunity could exist.</p>
-        <span class="post-read-more">Read the latest issue <span class="post-arrow" aria-hidden="true">&rarr;</span></span>
-      </article>
-    </a>
+        <a href="https://fridayanalytics.substack.com/" target="_blank" rel="noopener" class="section-cta">Open Substack
+          &rarr;</a>
+      </div>
 
-    <div class="series-card series-card--placeholder">
-      <article>
-        <div class="post-meta">
-          <span class="post-tag">Issue 2</span>
-          <span class="post-date">Coming next</span>
-        </div>
-        <h3>Current landscape of Analytics tooling</h3>
-        <p>Text2SQL, Agentic Analytics and everything in between and beyond. Plotting the current landscape into 2X2 matrix.</p>
-      </article>
-    </div>
+      <div class="series-wrapper">
+        <section class="series-track" aria-label="Future of Analytics newsletter">
 
-    <div class="series-card series-card--placeholder">
-      <article>
-        <div class="post-meta">
-          <span class="post-tag">Issue 3</span>
-          <span class="post-date">Coming soon</span>
-        </div>
-        <h3>Context Management</h3>
-        <p>RAG is dead, Data science is dead, Context is dead. Or may be not.</p>
-      </article>
-    </div>
+          <a href="future-of-analytics-part-1/" class="series-card">
+            <article>
+              <div class="post-meta">
+                <span class="post-tag">Issue 1</span>
+                <time class="post-date" datetime="2026-03-13">Mar 13, 2026</time>
+              </div>
+              <h3>Analytics - An Empirical View</h3>
+              <p>This issue maps the SQL era, dashboard era, AI era and maps to where the real opportunity could exist.
+              </p>
+              <span class="post-read-more">Read the latest issue <span class="post-arrow"
+                  aria-hidden="true">&rarr;</span></span>
+            </article>
+          </a>
 
-  </section>
-  </div>
-  </section>
+          <div class="series-card series-card--placeholder">
+            <article>
+              <div class="post-meta">
+                <span class="post-tag">Issue 2</span>
+                <span class="post-date">Coming next</span>
+              </div>
+              <h3>Current landscape of Analytics tooling</h3>
+              <p>Text2SQL, Agentic Analytics and everything in between and beyond. Plotting the current landscape into
+                2X2 matrix.</p>
+            </article>
+          </div>
+
+          <div class="series-card series-card--placeholder">
+            <article>
+              <div class="post-meta">
+                <span class="post-tag">Issue 3</span>
+                <span class="post-date">Coming soon</span>
+              </div>
+              <h3>Context Management</h3>
+              <p>RAG is dead, Data science is dead, Context is dead. Or may be not.</p>
+            </article>
+          </div>
+
+        </section>
+      </div>
+    </section>
 
     <section class="section-shell" id="thesis" aria-label="Friday thesis">
-  <div class="section-top">
-    <div class="section-top-copy">
-      <div class="section-eyebrow">Friday Thesis</div>
-      <h2 class="section-title">Our emerging belief system</h2>
-      <p class="section-desc">Subject to change. Four short thesis we find today that frame the consulting work and the way we think modern data teams should operate.</p>
-    </div>
-  </div>
-
-  <div class="thesis-wrapper">
-  <section class="thesis-track" aria-label="Our thesis">
-
-    <a href="thesis-self-serve-myth/" class="thesis-card">
-      <article>
-        <div class="post-meta">
-          <span class="post-tag">Thesis 1</span>
+      <div class="section-top">
+        <div class="section-top-copy">
+          <div class="section-eyebrow">Friday Thesis</div>
+          <h2 class="section-title">Our emerging belief system</h2>
+          <p class="section-desc">Subject to change. Four short thesis we find today that frame the consulting work and
+            the way we think modern data teams should operate.</p>
         </div>
-        <h3>Self-Serve Analytics is a Myth</h3>
-        <p>Every new technology right from Excel to no code BI tools made the same promise. But never delivered. 
-          It rather added to the bottleneck in Analytics workflow. Same is happening with A.I.</p>
-        <!-- <span class="post-read-more">Read thesis 1 <span class="post-arrow" aria-hidden="true">&rarr;</span></span> -->
-      </article>
-    </a>
+      </div>
 
-    <a href="thesis-ai-assists/" class="thesis-card">
-      <article>
-        <div class="post-meta">
-          <span class="post-tag">Thesis 2</span>
+      <div class="thesis-wrapper">
+        <section class="thesis-track" aria-label="Our thesis">
+
+          <a href="thesis-self-serve-myth/" class="thesis-card">
+            <article>
+              <div class="post-meta">
+                <span class="post-tag">Thesis 1</span>
+              </div>
+              <h3>Self-Serve Analytics is a Myth</h3>
+              <p>Every new technology right from Excel to no code BI tools made the same promise. But never delivered.
+                It rather added to the bottleneck in Analytics workflow. Same is happening with A.I.</p>
+              <!-- <span class="post-read-more">Read thesis 1 <span class="post-arrow" aria-hidden="true">&rarr;</span></span> -->
+            </article>
+          </a>
+
+          <a href="thesis-ai-assists/" class="thesis-card">
+            <article>
+              <div class="post-meta">
+                <span class="post-tag">Thesis 2</span>
+              </div>
+              <h3>AI Should Assist, Not Replace</h3>
+              <p>The right system removes grunt work but keeps the judgment with the data practitioner.
+                Same with A.I. systems which are capable of removing even more of the grunt work.</p>
+              <!-- <span class="post-read-more">Read thesis 2 <span class="post-arrow" aria-hidden="true">&rarr;</span></span> -->
+            </article>
+          </a>
+
+          <a href="thesis-data-vs-decision-context/" class="thesis-card">
+            <article>
+              <div class="post-meta">
+                <span class="post-tag">Thesis 3</span>
+              </div>
+              <h3>Data Context. Not Decision Context</h3>
+              <p>A correct number is not the same thing as a useful recommendation. Analytics exists to bridge that gap.
+              </p>
+              <!-- <span class="post-read-more">Read thesis 3 <span class="post-arrow" aria-hidden="true">&rarr;</span></span> -->
+            </article>
+          </a>
+
+          <a href="thesis-analytics-experience/" class="thesis-card">
+            <article>
+              <div class="post-meta">
+                <span class="post-tag">Thesis 4</span>
+              </div>
+              <h3>The Analytics Experience Needs a Rebuild</h3>
+              <p>Jupyter notebooks is the last best thing that ever happened to Analytics Experience Everything else is
+                borrowed from software development.
+                Analytics need more that a TUI. It needs a dedicated workspace supercharged with A.I.</p>
+              <!-- <span class="post-read-more">Read thesis 4 <span class="post-arrow" aria-hidden="true">&rarr;</span></span> -->
+            </article>
+          </a>
+
+        </section>
+      </div>
+    </section>
+
+    <!-- â”€â”€ UPDATES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <section class="section-shell" id="updates" aria-label="Updates">
+      <div class="section-top">
+        <div class="section-top-copy">
+          <div class="section-eyebrow">Updates</div>
+
         </div>
-        <h3>AI Should Assist, Not Replace</h3>
-        <p>The right system removes grunt work but keeps the judgment with the data practitioner. 
-          Same with A.I. systems which are capable of removing even more of the grunt work.</p>
-        <!-- <span class="post-read-more">Read thesis 2 <span class="post-arrow" aria-hidden="true">&rarr;</span></span> -->
-      </article>
-    </a>
+      </div>
 
-    <a href="thesis-data-vs-decision-context/" class="thesis-card">
-      <article>
-        <div class="post-meta">
-          <span class="post-tag">Thesis 3</span>
-        </div>
-        <h3>Data Context. Not Decision Context</h3>
-        <p>A correct number is not the same thing as a useful recommendation. Analytics exists to bridge that gap.</p>
-        <!-- <span class="post-read-more">Read thesis 3 <span class="post-arrow" aria-hidden="true">&rarr;</span></span> -->
-      </article>
-    </a>
+      <section class="post-list" aria-label="Updates">
 
-    <a href="thesis-analytics-experience/" class="thesis-card">
-      <article>
-        <div class="post-meta">
-          <span class="post-tag">Thesis 4</span>
-        </div>
-        <h3>The Analytics Experience Needs a Rebuild</h3>
-        <p>Jupyter notebooks is the last best thing that ever happened to Analytics Experience Everything else is borrowed from software development.
-          Analytics need more that a TUI. It needs a dedicated workspace supercharged with A.I.</p>
-        <!-- <span class="post-read-more">Read thesis 4 <span class="post-arrow" aria-hidden="true">&rarr;</span></span> -->
-      </article>
-    </a>
+        <a href="logo-announcement/" class="post-card">
+          <article>
+            <div class="post-meta">
+              <time class="post-date" datetime="2026-02-06">February 6, 2026</time>
+              <span class="post-tag">Update</span>
+            </div>
+            <h3>Logo announcement. Meet Grad</h3>
+            <p>In math, grad (∇) points in the direction of steepest increase. That idea fits AI-Assisted Analytics:
+              move toward the strongest signal. Fast.</p>
+            <span class="post-read-more">Read the announcement <span class="post-arrow"
+                aria-hidden="true">&rarr;</span></span>
+          </article>
+        </a>
 
-  </section>
-  </div>
-  </section>
+        <a href="https://www.fridaybot.ai/" target="_blank" rel="noopener" class="post-card">
+          <article>
+            <div class="post-meta">
+              <time class="post-date" datetime="2026-02-14">February 14, 2026</time>
+              <span class="post-tag">Product</span>
+            </div>
+            <h3>Friday is live!</h3>
+            <p>Friday is our proprietory harness, custom built for analytics with auto context management, self learning
+              and toolset to fit into your analytics stack.</p>
+            <span class="post-read-more">Try now <span class="post-arrow" aria-hidden="true">&rarr;</span></span>
+          </article>
+        </a>
 
-  <!-- â”€â”€ UPDATES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section class="section-shell" id="updates" aria-label="Updates">
-  <div class="section-top">
-    <div class="section-top-copy">
-      <div class="section-eyebrow">Updates</div>
-            
-    </div>
-  </div>
-
-  <section class="post-list" aria-label="Updates">
-
-    <a href="logo-announcement/" class="post-card">
-      <article>
-        <div class="post-meta">
-          <time class="post-date" datetime="2026-02-06">February 6, 2026</time>
-          <span class="post-tag">Update</span>
-        </div>
-        <h3>Logo announcement. Meet Grad</h3>
-        <p>In math, grad (∇) points in the direction of steepest increase. That idea fits AI-Assisted Analytics: move toward the strongest signal. Fast.</p>
-        <span class="post-read-more">Read the announcement <span class="post-arrow" aria-hidden="true">&rarr;</span></span>
-      </article>
-    </a>
-
-    <a href="https://www.fridaybot.ai/" target="_blank" rel="noopener" class="post-card">
-      <article>
-        <div class="post-meta">
-          <time class="post-date" datetime="2026-02-14">February 14, 2026</time>
-          <span class="post-tag">Product</span>
-        </div>
-        <h3>Friday is live!</h3>
-        <p>Friday is our proprietory harness, custom built for analytics with auto context management, self learning and toolset to fit into your analytics stack.</p>
-        <span class="post-read-more">Try now <span class="post-arrow" aria-hidden="true">&rarr;</span></span>
-      </article>
-    </a>
-
-  </section>
-  </section>
+      </section>
+    </section>
 
   </main>
 
@@ -1202,4 +1393,5 @@
   </footer>
 
 </body>
+
 </html>
