@@ -632,7 +632,6 @@
       padding: 108px 0 96px;
     }
 
-    .hero-intro,
     .section-shell {
       border: 1px solid rgba(23, 23, 23, 0.08);
       border-radius: 26px;
@@ -640,57 +639,6 @@
       box-shadow: 0 18px 45px rgba(28, 22, 15, 0.08);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-    }
-
-    .hero-intro {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
-      gap: 1.35rem;
-      max-width: none;
-      padding: clamp(2rem, 5vw, 3rem);
-      text-align: left;
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .hero-intro::before,
-    .hero-intro::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      z-index: -1;
-    }
-
-    .hero-intro::before {
-      width: 260px;
-      height: 260px;
-      top: -110px;
-      right: -70px;
-      background: rgba(232, 104, 12, 0.08);
-    }
-
-    .hero-intro::after {
-      width: 220px;
-      height: 220px;
-      bottom: -110px;
-      left: -80px;
-      background: rgba(200, 147, 10, 0.08);
-    }
-
-    .page-header h1 {
-      margin-bottom: 1rem;
-      font-size: clamp(2.9rem, 6vw, 4.9rem);
-      line-height: 0.98;
-      letter-spacing: -0.03em;
-      max-width: 10ch;
-    }
-
-    .page-header>p {
-      max-width: 58ch;
-      margin: 0;
-      font-size: 1.03rem;
-      line-height: 1.75;
     }
 
     .section-eyebrow {
@@ -702,47 +650,6 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.85rem;
-      margin-top: 1.6rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.78rem 1.2rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 600;
-      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
-    }
-
-    .btn-primary {
-      background: var(--orange);
-      color: #fff;
-      box-shadow: 0 10px 20px rgba(232, 104, 12, 0.18);
-    }
-
-    .btn-primary:hover {
-      background: var(--orange-hover);
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      border: 1px solid rgba(23, 23, 23, 0.1);
-      background: rgba(255, 255, 255, 0.72);
-      color: var(--text);
-    }
-
-    .btn-secondary:hover {
-      transform: translateY(-1px);
-      border-color: rgba(232, 104, 12, 0.2);
     }
 
     .hero-feature {
@@ -806,6 +713,24 @@
     .hero-feature .post-read-more,
     .hero-feature .post-date {
       color: rgba(255, 255, 255, 0.88);
+    }
+
+    .latest-issue-shell .section-top-copy {
+      max-width: 62ch;
+    }
+
+    .latest-issue-feature {
+      min-height: auto;
+      padding: clamp(1.65rem, 4vw, 2.4rem);
+    }
+
+    .latest-issue-feature h2 {
+      max-width: 13ch;
+      font-size: clamp(2rem, 4vw, 2.9rem);
+    }
+
+    .latest-issue-feature p {
+      max-width: 52ch;
     }
 
     .metrics {
@@ -886,22 +811,11 @@
       display: none;
     }
 
-    .thesis-wrapper,
     .series-wrapper {
       margin: 0;
       padding: 0;
     }
 
-    .thesis-track {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      overflow: visible;
-      scroll-snap-type: none;
-      padding: 0;
-    }
-
-    .thesis-card,
     .series-card,
     .post-card,
     .post-aside {
@@ -910,7 +824,6 @@
       background: rgba(255, 255, 255, 0.72);
     }
 
-    .thesis-card,
     .series-card,
     .post-card {
       min-height: 100%;
@@ -924,7 +837,6 @@
       box-shadow: 0 18px 32px rgba(28, 22, 15, 0.07);
     }
 
-    .thesis-card h3,
     .series-card h3,
     .post-card h3,
     .post-aside h3 {
@@ -935,7 +847,6 @@
       margin-bottom: 0.55rem;
     }
 
-    .thesis-card p,
     .series-card p,
     .post-card p,
     .post-aside p {
@@ -943,6 +854,87 @@
       font-size: 0.92rem;
       line-height: 1.65;
       flex: 1;
+    }
+
+    .thesis-shell {
+      margin: 0;
+      padding: 0 0 0.45rem;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .thesis-shell .section-top {
+      margin-bottom: 0.7rem;
+      gap: 0.8rem;
+    }
+
+    .thesis-shell .section-top-copy .section-desc {
+      max-width: 80ch;
+      margin-top: 0.25rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    .thesis-shell .section-title {
+      margin-top: 0.18rem;
+      font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+      line-height: 1.02;
+    }
+
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(210px, 1fr));
+      gap: 0.65rem;
+      overflow-x: auto;
+      padding-bottom: 0.2rem;
+      scrollbar-width: thin;
+    }
+
+    .manifesto-item {
+      min-height: 100%;
+      padding: 0.78rem 0.82rem 0.84rem;
+      border-radius: 18px;
+      border: 1px solid rgba(23, 23, 23, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(250, 247, 241, 0.74) 100%);
+    }
+
+    .manifesto-item::before {
+      content: "";
+      display: block;
+      width: 30px;
+      height: 2px;
+      margin-bottom: 0.7rem;
+      background: rgba(232, 104, 12, 0.36);
+    }
+
+    .manifesto-index {
+      display: inline-block;
+      margin-bottom: 0.4rem;
+      color: var(--orange);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .manifesto-item h3 {
+      font-family: var(--font-display);
+      font-size: clamp(0.96rem, 1.25vw, 1.14rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      max-width: none;
+      margin-bottom: 0.45rem;
+    }
+
+    .manifesto-item p {
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      line-height: 1.42;
+      max-width: none;
     }
 
     .series-track {
@@ -1023,7 +1015,6 @@
 
     @media (max-width: 980px) {
 
-      .hero-intro,
       .series-track,
       .post-list {
         grid-template-columns: 1fr;
@@ -1045,7 +1036,6 @@
         padding-top: 96px;
       }
 
-      .thesis-track,
       .metrics {
         grid-template-columns: 1fr;
       }
@@ -1128,44 +1118,87 @@
   <main>
 
     <!-- â”€â”€ OUR THESIS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-    <section class="page-header hero-intro" aria-label="Perspectives overview">
-      <div class="hero-copy-block">
-        <div class="section-eyebrow">Newly launched!</div>
-        <h1><span class="highlight">Future</span> of Analytics</h1>
-        <p>
-          Stay ahead of the curve: weekly takes on what’s happening at the intersection of AI and Analytics.
-        </p>
-        <div class="hero-actions">
-          <a href="https://fridayanalytics.substack.com/" target="_blank" rel="noopener"
-            class="btn btn-primary">Subscribe to the newsletter &rarr;</a>
-          <a href="../" class="btn btn-secondary">Back to the home page</a>
+    <section class="thesis-shell" id="thesis" aria-label="Friday thesis">
+      <div class="section-top">
+        <div class="section-top-copy">
+          <div class="section-eyebrow">Core Thesis</div>
+          <h2 class="section-title">The four ideas shaping our point of view,
+            how we think about A.I. and build for data teams
+          </h2>
         </div>
       </div>
 
-      <a href="future-of-analytics-part-1/" class="hero-feature">
+      <section class="manifesto-grid" aria-label="Our thesis">
+        <article class="manifesto-item">
+          <span class="manifesto-index">01</span>
+          <h3>Self-Serve Analytics is a Myth</h3>
+          <p>Every new technology right from Excel to no code BI tools made the same promise. But never delivered.
+            It rather added to the bottleneck in Analytics workflow. Same is happening with A.I.
+            Trust me no exec is going to build their own dashboard</p>
+        </article>
+
+        <article class="manifesto-item">
+          <span class="manifesto-index">02</span>
+          <h3>AI Should Assist, Not Replace</h3>
+          <p>The right system removes grunt work but keeps the judgment with the data practitioner.
+            Same with A.I. systems which are capable of removing even more of the grunt work.</p>
+        </article>
+
+        <article class="manifesto-item">
+          <span class="manifesto-index">03</span>
+          <h3>Context is the key</h3>
+          <p>A correct number is not the same thing as an useful recommendation. Analytics exists to bridge that gap.
+            And
+            the context required for generating that insight is very
+            different. A.I. must have the data context and decision context to come up with useful insight.</p>
+        </article>
+
+        <article class="manifesto-item">
+          <span class="manifesto-index">04</span>
+          <h3>The Analytics Experience Needs a Rebuild</h3>
+          <p>Jupyter notebooks is the last best thing that ever happened to Analytics Experience. Everything else is
+            borrowed from software development. Analytics need more that a TUI.
+            It needs a dedicated workspace supercharged with A.I. and an intelligent assistant that remembers.</p>
+        </article>
+      </section>
+    </section>
+
+    <section class="section-shell latest-issue-shell" aria-label="Latest issue from Future of Analytics">
+      <div class="section-top">
+        <div class="section-top-copy">
+          <div class="section-eyebrow">Latest Issue</div>
+          <h2 class="section-title">Future of Analytics</h2>
+          <p class="section-desc">Our weekly newsletter where the thesis turns into essays, market reads, and
+            operating ideas for AI-era analytics.</p>
+        </div>
+        <a href="https://fridayanalytics.substack.com/" target="_blank" rel="noopener" class="section-cta">Open Substack
+          &rarr;</a>
+      </div>
+
+      <a href="future-of-analytics-part-1/" class="hero-feature latest-issue-feature">
         <div class="hero-feature-meta">
           <span class="post-tag">Latest issue</span>
           <time class="post-date" datetime="2026-03-13">March 13, 2026</time>
         </div>
-        <div class="hero-feature-label">Future of Analytics - Issue 1</div>
+        <div class="hero-feature-label">Future of Analytics / Issue 1</div>
         <h2>Analytics - An empirical view</h2>
-        <p>A brief racap on the three eras of Analytics and into the future</p>
+        <p>A brief recap on the three eras of analytics and where the real opportunity could emerge next.</p>
         <span class="post-read-more">Read the issue <span class="post-arrow" aria-hidden="true">&rarr;</span></span>
       </a>
     </section>
 
     <section class="metrics" aria-label="Publication summary">
       <div class="metric">
+        <strong>4</strong>
+        <span>Guiding theses shaping our perspective.</span>
+      </div>
+      <div class="metric">
         <strong>1</strong>
-        <span>Newsletter series. Future of Analytics.</span>
+        <span>Weekly newsletter series. Future of Analytics.</span>
       </div>
       <div class="metric">
         <strong>2</strong>
-        <span>Updates</span>
-      </div>
-      <div class="metric">
-        <strong>4</strong>
-        <span>Thesis pieces defining our conviction.</span>
+        <span>Published updates.</span>
       </div>
     </section>
 
@@ -1228,64 +1261,6 @@
       </div>
     </section>
 
-    <section class="section-shell" id="thesis" aria-label="Friday thesis">
-      <div class="section-top">
-        <div class="section-top-copy">
-          <div class="section-eyebrow">Friday Thesis</div>
-          <h2 class="section-title">Our emerging belief system</h2>
-          <p class="section-desc">Subject to evolve. Four short thesis we find today that frame our work and
-            the way we think modern data teams should operate.</p>
-        </div>
-      </div>
-
-      <div class="thesis-wrapper">
-        <section class="thesis-track" aria-label="Our thesis">
-
-          <article class="thesis-card">
-            <div class="post-meta">
-              <span class="post-tag">Thesis 1</span>
-            </div>
-            <h3>Self-Serve Analytics is a Myth</h3>
-            <p>Every new technology right from Excel to no code BI tools made the same promise. But never delivered.
-              It rather added to the bottleneck in Analytics workflow. Same is happening with A.I.
-              Trust me no exec is going to build their own dashboard</p>
-          </article>
-
-          <article class="thesis-card">
-            <div class="post-meta">
-              <span class="post-tag">Thesis 2</span>
-            </div>
-            <h3>AI Should Assist, Not Replace</h3>
-            <p>The right system removes grunt work but keeps the judgment with the data practitioner.
-              Same with A.I. systems which are capable of removing even more of the grunt work.</p>
-          </article>
-
-          <article class="thesis-card">
-            <div class="post-meta">
-              <span class="post-tag">Thesis 3</span>
-            </div>
-            <h3>Data Context. Not Decision Context</h3>
-            <p>A correct number is not the same thing as a useful recommendation. Modern data teams should know the
-              difference.
-              Analytics exists to bridge that gap. And the context required for generating that insight is very
-              different
-              than the context required for generating a correct answers.
-            </p>
-          </article>
-
-          <article class="thesis-card">
-            <div class="post-meta">
-              <span class="post-tag">Thesis 4</span>
-            </div>
-            <h3>The Analytics Experience Needs a Rebuild</h3>
-            <p>Jupyter notebooks is the last best thing that ever happened to Analytics Experience. Everything else is
-              borrowed from software development. Analytics need more that a TUI.
-              It needs a dedicated workspace supercharged with A.I. And an intelligent assistant that remembers.</p>
-          </article>
-
-        </section>
-      </div>
-    </section>
 
     <!-- â”€â”€ UPDATES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
     <section class="section-shell" id="updates" aria-label="Updates">

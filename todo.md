@@ -14,7 +14,6 @@ redo og preview card
 talk to us, cta
 
 fix substack
-- new user page
 - new user welcome email
 
 open to business
@@ -28,3 +27,6 @@ code fixes
 ### DONE
 - future of analytics
 - - 1
+
+fix substack
+- new user page
