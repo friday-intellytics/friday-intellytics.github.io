@@ -363,7 +363,7 @@
     }
 
     .footer {
-      padding: 1rem clamp(1.5rem, 5vw, 4rem) 1.25rem;
+      padding: 3rem clamp(1.5rem, 5vw, 4rem);
       border-top: 1px solid var(--border-light);
       display: flex;
       align-items: center;
@@ -443,9 +443,6 @@
         text-align: left;
       }
 
-      .footer {
-        padding: 1.5rem clamp(1.25rem, 5vw, 2rem) 2rem;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -520,12 +517,8 @@
             <input type="email" id="email" name="email" required placeholder="you@example.com" autocomplete="email" />
           </div>
           <div class="form-row">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="WhatÃ¢â‚¬â„¢s this about?" />
-          </div>
-          <div class="form-row">
             <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Tell us how we can helpÃ¢â‚¬Â¦" rows="5"></textarea>
+            <input type="text" id="message" name="message" placeholder="How can we help?" />
           </div>
           <div class="form-submit">
             <button type="submit" class="btn btn-primary" id="form-submit-btn">
@@ -578,12 +571,17 @@
         setMessage('', '');
 
         var formData = new FormData(form);
-        var messageField = form.querySelector('textarea[name="message"]');
-        var fallbackMessage = messageField ? messageField.placeholder : '';
         var messageValue = formData.get('message');
-        if (!messageValue || !String(messageValue).trim()) {
-          formData.set('message', fallbackMessage);
+        var normalizedMessage = messageValue ? String(messageValue).trim() : '';
+
+        if (normalizedMessage) {
+          formData.set('message', normalizedMessage);
+          formData.set('subject', normalizedMessage);
+        } else {
+          formData.delete('message');
+          formData.delete('subject');
         }
+
         var payload = JSON.stringify(Object.fromEntries(formData.entries()));
 
         fetch(action, {
@@ -617,7 +615,7 @@
     <nav class="footer-nav" aria-label="Footer navigation">
       <a href="../#what-we-do">What We Do</a>
       <a href="../blog/">Perspectives</a>
-      <a href="#contact">Contact</a>
+      <a href="./">Contact</a>
     </nav>
     <div class="footer-copy">&copy; 2026 Friday Intellytics. All rights reserved.</div>
   </footer>
