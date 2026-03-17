@@ -1030,18 +1030,38 @@
 
     @media (max-width: 980px) {
 
-      .series-track,
       .post-list {
         grid-template-columns: 1fr;
+      }
+
+      /* Newsletter cards: horizontal scroll on tablet/mobile */
+      .series-track {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        grid-template-columns: none;
+        gap: 1rem;
+        padding-bottom: 0.65rem;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border) transparent;
+      }
+
+      .series-card {
+        flex: 0 0 300px;
+        scroll-snap-align: start;
+        min-width: 0;
+      }
+
+      .series-card:first-child {
+        grid-row: auto;
       }
 
       .section-top {
         flex-direction: column;
         align-items: start;
-      }
-
-      .series-card:first-child {
-        grid-row: auto;
       }
     }
 
@@ -1065,24 +1085,50 @@
         margin-top: 1rem;
       }
 
-      /* Stack update cards vertically — side-by-side is too narrow on mobile */
+      /* Side-scroll update cards on mobile */
       #updates .post-list {
-        flex-direction: column;
-        overflow-x: visible;
-        scroll-snap-type: none;
-        padding: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 0 0.65rem;
         gap: 0.75rem;
       }
 
       #updates .post-list .post-card {
-        flex: 1 1 auto;
+        flex: 0 0 82vw;
         min-width: 0;
-        scroll-snap-align: none;
+        scroll-snap-align: start;
       }
 
       /* Give updates section more breathing room between header + cards */
       #updates {
         gap: 0.75rem;
+      }
+
+      /* Side-scroll newsletter cards on mobile */
+      #newsletter .series-track {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        grid-template-columns: none;
+        gap: 0.75rem;
+        padding-bottom: 0.65rem;
+      }
+
+      #newsletter .series-card {
+        flex: 0 0 82vw;
+        scroll-snap-align: start;
+        min-width: 0;
+      }
+
+      #newsletter .series-card:first-child {
+        grid-row: auto;
       }
 
       /* Add scroll-snap to the manifesto grid on mobile */
