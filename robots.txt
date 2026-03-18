@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /blog/logo-announcement-ix/
 
 Sitemap: https://fridayintellytics.com/sitemap.xml

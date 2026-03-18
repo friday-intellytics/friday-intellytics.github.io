@@ -6,12 +6,13 @@
   <title>Perspectives - Friday Intellytics</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description"
-    content="Read Friday perspectives on AI-Assisted Analytics, Fast Insights, and the Analytics Experience for modern data teams building with AI." />
+    content="Friday perspectives on AI-Assisted Analytics, Fast Insights, and the Analytics Experience for modern data teams." />
   <meta name="author" content="Friday Intellytics" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://fridayintellytics.com/blog/" />
   <link rel="icon" type="image/png" href="../assets/images/friday_logo.png" />
   <link rel="apple-touch-icon" href="../assets/images/friday_logo.png" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -1030,18 +1031,38 @@
 
     @media (max-width: 980px) {
 
-      .series-track,
       .post-list {
         grid-template-columns: 1fr;
+      }
+
+      /* Newsletter cards: horizontal scroll on tablet/mobile */
+      .series-track {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        grid-template-columns: none;
+        gap: 1rem;
+        padding-bottom: 0.65rem;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border) transparent;
+      }
+
+      .series-card {
+        flex: 0 0 300px;
+        scroll-snap-align: start;
+        min-width: 0;
+      }
+
+      .series-card:first-child {
+        grid-row: auto;
       }
 
       .section-top {
         flex-direction: column;
         align-items: start;
-      }
-
-      .series-card:first-child {
-        grid-row: auto;
       }
     }
 
@@ -1054,6 +1075,107 @@
       .metrics {
         grid-template-columns: 1fr;
       }
+    }
+
+    /* ── MOBILE CARD FIXES ────────────────────────────────────── */
+    @media (max-width: 640px) {
+      /* Reduce section-shell padding so cards aren't squeezed */
+      .section-shell {
+        padding: 1rem;
+        border-radius: 18px;
+        margin-top: 1rem;
+      }
+
+      /* Side-scroll update cards on mobile */
+      #updates .post-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 0 0.65rem;
+        gap: 0.75rem;
+      }
+
+      #updates .post-list .post-card {
+        flex: 0 0 82vw;
+        min-width: 0;
+        scroll-snap-align: start;
+      }
+
+      /* Give updates section more breathing room between header + cards */
+      #updates {
+        gap: 0.75rem;
+      }
+
+      /* Side-scroll newsletter cards on mobile */
+      #newsletter .series-track {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        grid-template-columns: none;
+        gap: 0.75rem;
+        padding-bottom: 0.65rem;
+      }
+
+      #newsletter .series-card {
+        flex: 0 0 82vw;
+        scroll-snap-align: start;
+        min-width: 0;
+      }
+
+      #newsletter .series-card:first-child {
+        grid-row: auto;
+      }
+
+      /* Add scroll-snap to the manifesto grid on mobile */
+      .manifesto-grid {
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.65rem;
+      }
+
+      .manifesto-item {
+        scroll-snap-align: start;
+      }
+
+      /* Series cards: slightly wider on very small screens for better readability */
+      .series-card,
+      .thesis-card {
+        flex: 0 0 78vw;
+      }
+
+      /* Latest issue feature: more comfortable padding */
+      .latest-issue-feature {
+        padding: 1.35rem;
+      }
+
+      /* Section title sizes: scale down a touch on mobile */
+      .section-title {
+        font-size: clamp(1.35rem, 5.5vw, 1.7rem);
+      }
+
+      /* Hero feature title */
+      .hero-feature h2,
+      .latest-issue-feature h2 {
+        font-size: clamp(1.55rem, 6vw, 2rem);
+      }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1094,7 +1216,7 @@
       {
         "@type": "BlogPosting",
         "headline": "Analytics â€” an Empirical View",
-        "description": "Analytics never got its DevEx moment. To understand why, it helps to look at what actually happened across three eras of analytics.",
+        "description": "Analytics predates farming. From tally marks on bone to AI agents, Friday traces 42,000 years of externalizing memory and automating reason.",
         "datePublished": "2026-03-13",
         "author": { "@type": "Organization", "name": "Friday Intellytics" },
         "url": "https://fridayintellytics.com/blog/future-of-analytics-part-1/"
@@ -1107,6 +1229,16 @@
         "author": { "@type": "Organization", "name": "Friday Intellytics" },
         "url": "https://fridayintellytics.com/blog/logo-announcement/"
       }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://fridayintellytics.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Perspectives" }
     ]
   }
   </script>
@@ -1131,6 +1263,7 @@
   </header>
 
   <main>
+    <h1 class=”sr-only”>Perspectives - Friday Intellytics</h1>
 
     <!-- â”€â”€ OUR THESIS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
     <section class="thesis-shell" id="thesis" aria-label="Friday thesis">
@@ -1186,7 +1319,7 @@
           <p class="section-desc">Our weekly newsletter where the thesis turns into essays, market reads, and
             operating ideas for AI-era analytics.</p>
         </div>
-        <a href="https://fridayanalytics.substack.com/" target="_blank" rel="noopener" class="section-cta">Open Substack
+        <a href="https://fridayintellytics.substack.com/" target="_blank" rel="noopener" class="section-cta">Open Substack
           &rarr;</a>
       </div>
 
@@ -1198,7 +1331,7 @@
         <div class="hero-feature-label">Future of Analytics / Issue 1</div>
         <h2>Analytics - An empirical view</h2>
         <p>Analytics predates farming. Roughly 42,000 years ago, a human picked up a baboon fibula and carved 29 notches
-          into it..</p>
+          into it.</p>
         <span class="post-read-more">Read the issue <span class="post-arrow" aria-hidden="true">&rarr;</span></span>
       </a>
     </section>
@@ -1229,7 +1362,7 @@
             Analytics.
             A.I. advancements, market movement and industry trends with our take on it.</p>
         </div>
-        <a href="https://fridayanalytics.substack.com/" target="_blank" rel="noopener" class="section-cta">Open Substack
+        <a href="https://fridayintellytics.substack.com/" target="_blank" rel="noopener" class="section-cta">Open Substack
           &rarr;</a>
       </div>
 
@@ -1243,8 +1376,8 @@
                 <time class="post-date" datetime="2026-03-13">Mar 13, 2026</time>
               </div>
               <h3>Analytics - An Empirical View</h3>
-              <p>This issue maps the SQL era, dashboard era, AI era and maps to where the real opportunity could exist.
-              </p>
+              <p>Analytics predates farming. Roughly 42,000 years ago, a human picked up a baboon fibula and carved 29
+                notches into it.</p>
               <span class="post-read-more">Read the latest issue <span class="post-arrow"
                   aria-hidden="true">&rarr;</span></span>
             </article>
