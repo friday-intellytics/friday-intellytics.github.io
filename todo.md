@@ -1,10 +1,6 @@
-fix substack
-- new user welcome email
-
 open to business
 fix my linkedin 
 shoot
-
 
 code fixes
 - styling modularize rather than having repeated code in every site
@@ -19,3 +15,6 @@ fix substack
 talk to us, cta
 
 redo og preview card
+
+fix substack
+- new user welcome email
