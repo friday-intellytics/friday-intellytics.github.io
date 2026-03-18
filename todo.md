@@ -1,18 +1,3 @@
-
-
-
-fix content
-- logo announcement
-- thesis
-- - 1
-- - 2
-- - 3
-- - 4
-
-
-redo og preview card
-talk to us, cta
-
 fix substack
 - new user welcome email
 
@@ -30,3 +15,7 @@ code fixes
 
 fix substack
 - new user page
+
+talk to us, cta
+
+redo og preview card
