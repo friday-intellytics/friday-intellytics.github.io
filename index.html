@@ -113,6 +113,10 @@
       font-size: 1.05rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
     }
 
     .nav-links {
@@ -154,11 +158,16 @@
       .nav-links .hide-mobile {
         display: none;
       }
+
+      .nav-links {
+        gap: 1rem;
+      }
     }
 
     /* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .hero {
       min-height: 100vh;
+      min-height: 100svh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -302,7 +311,7 @@
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
       gap: 1.25rem;
       max-width: 1000px;
       margin: 0 auto;
@@ -407,7 +416,7 @@
       }
     }
 
-    /* â”€â”€ FOOTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* â”€â”€ FOOTER (mobile stacking handled below media query) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .footer {
       padding: 3rem clamp(1.5rem, 5vw, 4rem);
       border-top: 1px solid var(--border-light);
@@ -455,6 +464,14 @@
     .footer-copy {
       font-size: 0.82rem;
       color: var(--text-muted);
+    }
+
+    @media (max-width: 640px) {
+      .footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
     }
 
     /* â”€â”€ HELPERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
